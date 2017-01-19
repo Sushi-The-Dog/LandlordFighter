@@ -33,7 +33,7 @@
                         <div class="form-top">
                             <div class="form-top-left">
                                 <h3>{{ho}}</h3>
-                                <p>{{ht}}&nbsp;&nbsp;<i class="fa fa-question"></i></p>
+                                <p id="mover">{{ht}}&nbsp;&nbsp;<i class="fa fa-question"></i></p>
                             </div>
                             <div class="form-top-right">
                                 <i class="fa fa-key"></i>
@@ -49,7 +49,7 @@
                                     <label class="sr-only" for="form-password">{{ps}}</label>
                                     <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
                                 </div>
-                                <button type="button" class="btn">{{bt}}</button>
+                                <button type="button" v-on:click="login" class="button-longshadow-right button-longshadow-expand button button-highlight bbtn button-rounded">NOW!</button>
                             </form>
                         </div>
                     </div>
