@@ -2,4 +2,4 @@
 Texas Hold'em Poker Game And AI based on Web
 
 ---
-## Library - phpsocket.io, workerman
+_Library - phpsocket.io, workerman_
