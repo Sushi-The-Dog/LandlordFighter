@@ -1,5 +1,6 @@
 <?php
 session_start();
+$requestback = array();
 if(!isset($_COOKIE['username'])){
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -10,7 +11,7 @@ if(!isset($_COOKIE['username'])){
   file_put_contents('../json/users.json', $re);
 }else{
   $eusername = $_COOKIE['username'];
-  $epassword = $_COOKIE['password'];
+  // $epassword = $_COOKIE['password'];
   $key = $_COOKIE['key'];
   $contentd = file_get_contents('../json/users.json');
   $data = json_decode($contentd);
@@ -19,11 +20,11 @@ if(!isset($_COOKIE['username'])){
   $length = count($data);
   for($x=0;$x<$length;$x++){
     if($data[$x][0] == $username){
-
+      array_push($requestback,1,$username);
       break;
     }
   }
-  $password = decode($epassword,$key);
+  // $password = decode($epassword,$key);
   $re = json_encode($data);
   file_put_contents('../json/users.json', $re);
 
@@ -46,4 +47,5 @@ function decode($string, $skey) {
     }
     return base64_decode(join('', $strArr));
 }
+echo
  ?>
