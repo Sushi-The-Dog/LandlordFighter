@@ -41,7 +41,7 @@ var appmain = new Vue({
         ht: 'Which is a Texas poker game',
         un: 'Username',
         ps: 'Password',
-        bt: 'NOW!'
+        bt: 'NOW!',
     },
     methods: {
         login: function() {
