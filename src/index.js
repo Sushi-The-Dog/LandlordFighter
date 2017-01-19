@@ -6,52 +6,48 @@ var interesting = {
     daytime: function() {
         var now = new Date();
         var hour = now.getHours();
+        appmain.title = '<img src="./style/ico/icon.png" width="50px"/>';
         if (hour < 6) {
-            appmain.title = "It's ";
-            appmain.titlept = "Early Morning";
+            appmain.title += "It's <strong>Early Morning</strong>";
         } else if (hour < 9) {
-            appmain.title = "Good ";
-            appmain.titlept = "Morning";
+            appmain.title += "Good <strong>Morning</strong>";
         } else if (hour < 12) {
-            appmain.title = "Yeah ";
-            appmain.titlept = ":D";
+            appmain.title += "Yeah <strong>:D</strong>";
         } else if (hour < 14) {
-            appmain.title = "It's ";
-            appmain.titlept = "Noon";
+            appmain.title += "It's <strong>Noon</strong>";
         } else if (hour < 17) {
-            appmain.title = "Good ";
-            appmain.titlept = "Afternoon";
+            appmain.title += "Good <strong>Afternoon</strong>";
         } else if (hour < 19) {
-            appmain.title = "Good ";
-            appmain.titlept = "Evening";
+            appmain.title += "Good <strong>Evening</strong>";
         } else if (hour < 22) {
-            appmain.title = "It's ";
-            appmain.titlept = "Late";
+            appmain.title += "It's <strong>Late</strong>";
         } else {
-            appmain.title = "Sleep ";
-            appmain.titlept = "Tight";
+            appmain.title += "Sleep <strong>Tight</strong>";
         }
     }
 };
 var appmain = new Vue({
     el: '#index',
     data: {
-        title: 'Hello',
-        titlept: 'Vue!',
+        title: 'Hello Vue!',
         ho: 'Login for LandlordFighter:',
         ht: 'User Sign-Up is disabled.',
         un: 'Username',
         ps: 'Password',
         bt: 'NOW!',
-        ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open'
+        ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
+        username: '',
+        password: '',
+        buttondis: true
     },
     methods: {
         login: function() {
             $.ajax({
-                url: './php/test.php',
-                type: 'GET',
+                url: './php/log.php',
+                type: 'POST',
                 data: {
-                    'test': 'test'
+                    'username': appmain.username,
+                    'password': appmain.password
                 },
                 success: function(data) {
                     console.log(data);
@@ -60,6 +56,13 @@ var appmain = new Vue({
                     console.log("ERROR");
                 }
             });
+        },
+        inputing: function() {
+            if (appmain.username.length < 1 || appmain.password.length < 1) {
+                appmain.buttondis = true;
+            } else {
+                appmain.buttondis = false;
+            }
         },
         popover: function() {
             console.log('?');
