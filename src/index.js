@@ -1,6 +1,7 @@
 (function() {
     'use strict';
 }());
+// v-html need to be updated
 var interesting = {
     daytime: function() {
         var now = new Date();
