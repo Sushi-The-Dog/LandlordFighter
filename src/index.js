@@ -13,8 +13,8 @@ var interesting = {
             appmain.title = "Good ";
             appmain.titlept = "Morning";
         } else if (hour < 12) {
-            appmain.title = "Have ";
-            appmain.titlept = "Fun";
+            appmain.title = "Yeah ";
+            appmain.titlept = ":D";
         } else if (hour < 14) {
             appmain.title = "It's ";
             appmain.titlept = "Noon";
