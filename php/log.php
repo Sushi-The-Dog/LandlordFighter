@@ -17,7 +17,6 @@ if(!isset($_COOKIE['username'])){
   // process
   $username = decode($eusername,"wengye");
   $length = count($data);
-  //BEARKPOINT
   for($x=0;$x<$length;$x++){
     if($data[$x][0] == $username){
 
