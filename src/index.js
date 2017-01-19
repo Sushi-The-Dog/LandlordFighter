@@ -42,6 +42,7 @@ var appmain = new Vue({
         un: 'Username',
         ps: 'Password',
         bt: 'NOW!',
+        ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open'
     },
     methods: {
         login: function() {
