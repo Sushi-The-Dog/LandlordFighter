@@ -38,7 +38,7 @@ var appmain = new Vue({
         title: 'Hello',
         titlept: 'Vue!',
         ho: 'Login for LandlordFighter:',
-        ht: 'Which is a Texas poker game',
+        ht: 'User Sign-Up is disabled.',
         un: 'Username',
         ps: 'Password',
         bt: 'NOW!',
@@ -59,6 +59,10 @@ var appmain = new Vue({
                     console.log("ERROR");
                 }
             });
+        },
+        popover: function() {
+            console.log('?');
+            $("#overr").popover();
         }
     }
 });
