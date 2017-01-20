@@ -14,7 +14,7 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
         $md5 = md5($password);
         for ($x = 0;$x < $length;++$x) {
             if ($data[$x][0] == $username) {
-                if ($data[$x][2] == $md5) {
+                if ($data[$x][1] == $md5) {
                     array_push($requestback, 1, $username);
                     break;
                 } else {
@@ -29,8 +29,6 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
     } else {
         array_push($requestback, 3, 'Error');
     }
-    // $re = json_encode($data);
-    // file_put_contents('../json/users.json', $re);
 } else {
     $username = $_COOKIE['username'];
     $eusername = $_COOKIE['eusername'];
@@ -40,7 +38,7 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
         $length = count($data);
         for ($x = 0;$x < $length;++$x) {
             if ($data[$x][0] == $username) {
-                if (decode($eusername, $data[$x][3]) == $username) {
+                if (decode($eusername, $data[$x][2]) == $username) {
                     array_push($requestback, 1, $username);
                     break;
                 } else {
@@ -58,6 +56,10 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
     }
   // $password = decode($epassword,$key);
 }
+echo json_encode($requestback);
+
+//under ->
+//functions
 function pregmatch($string, $preg)
 {
     if (preg_match($preg, $string)) {
@@ -87,4 +89,3 @@ function decode($string, $skey)
 
     return base64_decode(implode('', $strArr));
 }
-echo json_encode($requestback);
