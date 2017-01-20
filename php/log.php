@@ -7,7 +7,7 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
     // if(isset($_POST['username']))
     $username = $_POST['username'];
     $password = $_POST['password'];
-    if (pregmatch($username, '^[a-zA-Z0-9_]+^') && pregmatch($password, '^[a-zA-Z0-9_-]+^')) {
+    if (pregmatch($username, '/^[a-zA-Z0-9_]+$/') && pregmatch($password, '/^[a-zA-Z0-9_!@]+$/')) {
         $contentd = file_get_contents('../json/users.json');
         $data = json_decode($contentd);
         $length = count($data);
@@ -34,7 +34,7 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
 } else {
     $username = $_COOKIE['username'];
     $eusername = $_COOKIE['eusername'];
-    if (pregmatch($username, '^[a-zA-Z0-9_]+^') && pregmatch($eusername, '^[a-zA-Z0-9_]+^')) {
+    if (pregmatch($username, '/^[a-zA-Z0-9_]+$/') && pregmatch($eusername, '/^[a-zA-Z0-9_]+$/')) {
         $contentd = file_get_contents('../json/users.json');
         $data = json_decode($contentd);
         $length = count($data);

@@ -30,7 +30,7 @@ var appmain = new Vue({
     el: '#index',
     data: {
         title: 'Hello Vue!',
-        ho: 'Login for LandlordFighter:',
+        ho: 'Login to <i class="fa fa-chevron-circle-right"></i><br><strong>LandlordFighter</strong>:',
         ht: 'User Sign-Up is disabled.',
         bt: '<strong>NOW!</strong>',
         ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
@@ -52,6 +52,7 @@ var appmain = new Vue({
                     'mode': appmain.mode
                 },
                 success: function(data) {
+                  appmain.output = data;
                     ouc = JSON.parse(data);
                     switch (ouc[0]) {
                         case 0:
