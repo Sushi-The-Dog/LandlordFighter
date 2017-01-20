@@ -36,7 +36,7 @@ var appmain = new Vue({
         ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
         username: '',
         password: '',
-        output: '',
+        output: 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>',
         mode: 0,
         buttondis: true
     },
