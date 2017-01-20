@@ -6,6 +6,10 @@ h1, h2 {
     line-height: 50px;
 }
 
+.inner-bg {
+    padding: 50px 0 80px 0;
+}
+
 h3 {
     font-size: 32px;
     font-weight: 300;
@@ -13,17 +17,19 @@ h3 {
     line-height: 40px;
 }
 
-img {
-    max-width: 100%;
+@media (max-width: 767px) {
+    .inner-bg {
+        padding: 60px 0 110px 0;
+    }
 }
 
 .form-top-right {
     float: right;
-    /*width: 25%;*/
-    /*padding-top: 5px;*/
-    font-size: 66px;
+    width: 25%;
+    padding-top: 5px;
+    font-size: 50px;
     color: #ddd;
-    /*line-height: 100px;*/
+    line-height: 100px;
     text-align: right;
 }
 
