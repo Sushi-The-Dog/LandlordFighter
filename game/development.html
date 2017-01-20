@@ -19,13 +19,16 @@
         <div class="row clearfix footer-meng">
             <div class="col-md-12 column">
                 <div class="jumbotron" id="foot">
-                    <p v-html="cards">
+                    <div class="form-top-right">
+                        <i class="fa fa-key fa-3x"></i>
+                    </div>
+                    <h1 v-html="cards">
                         {{cards}}
-                    </p>
-                    <p>
-                        <img src="../style/ico/icon.png" alt="">
-                        <!-- <div class="button-group bu"> -->
-                        <div class="dropup">
+                    </h1>
+                    <!-- <p> -->
+                    <img src="../style/ico/icon.png" alt="">
+                    <div class="button-group">
+                        <div class="btn-group dropup">
                             <a type="button" class="button button-action dropdown-toggle" data-toggle="dropdown">{{actions[0]}}
                       		</a>
                             <ul class="dropdown-menu">
@@ -36,7 +39,7 @@
                                 <li><a v-on:click="test">{{allin}}</a></li>
                             </ul>
                         </div>
-                        <div class="dropup">
+                        <div class="btn-group dropup">
                             <a type="button" class="button button-royal dropdown-toggle" data-toggle="dropdown">{{actions[1]}}
                       		</a>
                             <ul class="dropdown-menu">
@@ -48,12 +51,15 @@
                             </ul>
                         </div>
                         <div class="btn-group">
-                        <a type="button" class="button button-caution">{{actions[2]}}
+                            <a type="button" class="button button-caution">{{actions[2]}}
                           </a>
                         </div>
-                    </p>
+                    </div>
+
+                    <!-- </p> -->
                 </div>
             </div>
+
         </div>
     </div>
 </body>
