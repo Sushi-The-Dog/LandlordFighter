@@ -5,6 +5,7 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
+    z-index: 100;
 }
 
 strong {
@@ -59,6 +60,21 @@ img {
     -ms-filter: blur(5px);
     filter: blur(5px);
 }
+
+/*#cov {
+    z-index: 50;
+}
+
+*/
+
+/*.flot-top-top {
+    z-index: 100;
+}
+
+.flot-down-dpwn {
+    z-index: 9999;
+    position: relative;
+}*/
 
 .btn-link-1 {
     display: inline-block;
