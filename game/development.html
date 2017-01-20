@@ -17,57 +17,63 @@
 <body>
     <div class="container-fluid">
         <div class="row clearfix footer-meng">
-            <div class="col-md-12 column">
-                <div class="jumbotron inner-bg" id="foot">
-                    <div class="form-top-right form-box">
-                        <i class="fa fa-gamepad fa-3x"></i>
-                    </div>
-                    <h1 v-html="cards">
-                        {{cards}}
-                    </h1>
-                    <!-- <p> -->
-                    <img src="../style/ico/icon.png" width="42px">
-                    <div class="button-group">
-                        <div class="btn-group dropup">
-                            <a type="button" class="button button-action dropdown-toggle" data-toggle="dropdown">{{actions[0]}}
-                      		</a>
-                            <ul class="dropdown-menu">
-                                <li><a v-on:click="test">{{amounts[0]}}</a></li>
-                                <li><a v-on:click="test">{{amounts[1]}}</a></li>
-                                <li><a v-on:click="test">{{amounts[2]}}</a></li>
-                                <li class="divider"></li>
-                                <li><a v-on:click="test">{{allin}}</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group dropup">
-                            <a type="button" class="button button-royal dropdown-toggle" data-toggle="dropdown">{{actions[1]}}
-                      		</a>
-                            <ul class="dropdown-menu">
-                                <li><a v-on:click="test">{{amounts[0]}}</a></li>
-                                <li><a v-on:click="test">{{amounts[1]}}</a></li>
-                                <li><a v-on:click="test">{{amounts[2]}}</a></li>
-                                <li class="divider"></li>
-                                <li><a v-on:click="test">{{allin}}</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group">
-                            <a type="button" class="button button-caution">{{actions[2]}}
-                          </a>
-                        </div>
-                    </div>
-
-                    <!-- </p> -->
+            <div class="col-md-6 column">
+                <div class="left-corner well" id="main">
+                    <img v-bind:src="cardone">
+                    <img v-bind:src="cardtwo">
                 </div>
             </div>
-
+            <div class="col-md-6 column">
+                <div class="right-corner well" id="foot">
+                    <h2>
+                    <i class="fa fa-money"></i>&nbsp;&nbsp;{{chips}}
+                  </h2>
+                    <h3>
+                      {{users}}
+                  </h3>
+                    <img src="../style/ico/icon.png" width="42px">
+                    <div class="btn-group dropup">
+                        <a type="button" class="button button-action dropdown-toggle" data-toggle="dropdown">{{actions[0]}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a v-on:click="test">{{amounts[0]}}</a></li>
+                            <li><a v-on:click="test">{{amounts[1]}}</a></li>
+                            <li><a v-on:click="test">{{amounts[2]}}</a></li>
+                            <li class="divider"></li>
+                            <li><a v-on:click="test">{{allin}}</a></li>
+                            <li class="divider"></li>
+                            <li><a v-on:click="test">{{allin}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group dropup">
+                        <a type="button" class="button button-royal dropdown-toggle" data-toggle="dropdown">{{actions[1]}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a v-on:click="test">{{amounts[0]}}</a></li>
+                            <li><a v-on:click="test">{{amounts[1]}}</a></li>
+                            <li><a v-on:click="test">{{amounts[2]}}</a></li>
+                            <li class="divider"></li>
+                            <li><a v-on:click="test">{{allin}}</a></li>
+                            <li class="divider"></li>
+                            <li><a v-on:click="test">{{allin}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="button button-caution">{{actions[2]}}
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 <script src="../lib/jquery.min.js"></script>
+<script src="../lib/poker.min.js"></script>
 <script src="../lib/socket.io.js"></script>
 <script src="../lib/vue.js"></script>
 <script src="../lib/layer.js"></script>
 <script src="../lib/bootstrap.min.js"></script>
 <script src="../src/llfdev.js"></script>
+
 
 </html>
