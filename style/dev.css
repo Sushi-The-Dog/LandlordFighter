@@ -1,0 +1,27 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+    min-height: 100%;
+    position: relative;
+}
+
+.footer-meng {
+    position: absolute;
+    bottom: 0;
+    padding: 45px;
+    width: 100%;
+}
+.button{
+  width: auto;
+}

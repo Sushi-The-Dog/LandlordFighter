@@ -5,13 +5,63 @@
     <title>LLF DEV</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../lib/socket.io.js"></script>
-    <script src="../lib/vue.js"></script>
-    <script src="../lib/layer.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/buttons.css">
+    <link rel="stylesheet" href="../style/goo.fonts">
+    <link rel="stylesheet" href="../style/dev.css">
+    <link rel="shortcut icon" href="../style/ico/icon.png">
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/form-elements.css">
 </head>
-<body>
 
+<body>
+    <div class="container-fluid">
+        <div class="row clearfix footer-meng">
+            <div class="col-md-12 column">
+                <div class="jumbotron" id="foot">
+                    <p v-html="cards">
+                        {{cards}}
+                    </p>
+                    <p>
+                        <img src="../style/ico/icon.png" alt="">
+                        <!-- <div class="button-group bu"> -->
+                        <div class="dropup">
+                            <a type="button" class="button button-action dropdown-toggle" data-toggle="dropdown">{{actions[0]}}
+                      		</a>
+                            <ul class="dropdown-menu">
+                                <li><a v-on:click="test">{{amounts[0]}}</a></li>
+                                <li><a v-on:click="test">{{amounts[1]}}</a></li>
+                                <li><a v-on:click="test">{{amounts[2]}}</a></li>
+                                <li class="divider"></li>
+                                <li><a v-on:click="test">{{allin}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropup">
+                            <a type="button" class="button button-royal dropdown-toggle" data-toggle="dropdown">{{actions[1]}}
+                      		</a>
+                            <ul class="dropdown-menu">
+                                <li><a v-on:click="test">{{amounts[0]}}</a></li>
+                                <li><a v-on:click="test">{{amounts[1]}}</a></li>
+                                <li><a v-on:click="test">{{amounts[2]}}</a></li>
+                                <li class="divider"></li>
+                                <li><a v-on:click="test">{{allin}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                        <a type="button" class="button button-caution">{{actions[2]}}
+                          </a>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/socket.io.js"></script>
+<script src="../lib/vue.js"></script>
+<script src="../lib/layer.js"></script>
+<script src="../lib/bootstrap.min.js"></script>
+<script src="../src/llfdev.js"></script>
+
 </html>
