@@ -2,7 +2,8 @@
 
 session_start();
 $requestback = array();
-if (!isset($_COOKIE['username'])) {
+$mode = $_POST['mode'];
+if (!isset($_COOKIE['username']) || $mode == 1) {
     // if(isset($_POST['username']))
     $username = $_POST['username'];
     $password = $_POST['password'];

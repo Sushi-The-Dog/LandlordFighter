@@ -32,25 +32,54 @@ var appmain = new Vue({
         title: 'Hello Vue!',
         ho: 'Login for LandlordFighter:',
         ht: 'User Sign-Up is disabled.',
-        un: 'Username',
-        ps: 'Password',
-        bt: 'NOW!',
+        bt: '<strong>NOW!</strong>',
         ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
         username: '',
         password: '',
+        output: '',
+        mode: 0,
         buttondis: true
     },
     methods: {
         login: function() {
+            appmain.bt += '  <i class="fa fa-spinner fa-spin"></i>';
             $.ajax({
                 url: './php/log.php',
                 type: 'POST',
                 data: {
                     'username': appmain.username,
-                    'password': appmain.password
+                    'password': appmain.password,
+                    'mode': appmain.mode
                 },
                 success: function(data) {
-                    console.log(data);
+                    ouc = JSON.parse(data);
+                    switch (ouc[0]) {
+                        case 0:
+                            appmain.output = '<strong>Username</strong> does not <strong>Exist</strong>';
+                            appmain.output += '  <i class="fa fa-reply-all"></i>';
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            appmain.output = '<strong>Password</strong> is not <strong>Correct</strong>';
+                            appmain.output += '  <i class="fa fa-chain-broken"></i>';
+                            break;
+                        case 3:
+                            appmain.output = '<strong>Format Error</strong>';
+                            appmain.output += '  <i class="fa fa-strikethrough"></i>';
+                            break;
+                        case 4:
+                            appmain.output = '<strong>Cookie</strong> is not <strong>Marched</strong>';
+                            appmain.output += '  <i class="fa fa-window-restore"></i>';
+                            break;
+                        case 5:
+                            appmain.output = '<strong>Cookie</strong> is not <strong>Exist</strong>';
+                            appmain.output += '  <i class="fa fa-bars"></i>';
+                            break;
+                        default:
+                            appmain.output = data;
+                    }
+                    appmain.bt = 'NOW!';
                 },
                 error: function() {
                     console.log("ERROR");
