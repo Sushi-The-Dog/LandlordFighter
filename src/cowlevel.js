@@ -41,7 +41,8 @@ var appmain = new Vue({
         displaymode: 7,
         memorydistroyer: 7,
         buttondis: true,
-        completeed: false
+        completeed: false,
+        url: '../php/register.php'
     },
     methods: {
         login: function() {
@@ -49,7 +50,7 @@ var appmain = new Vue({
             appmain.bt += '  <i class="fa fa-spinner fa-spin"></i>';
             var submitpass = md5(appmain.password);
             $.ajax({
-                url: '../php/register.php',
+                url: appmain.url,
                 type: 'POST',
                 data: {
                     'username': appmain.username,
@@ -77,6 +78,18 @@ var appmain = new Vue({
         inputing: function() {
             appmain.displaymessage("meh");
             if (!appmain.completeed) {
+                if (appmain.username == 'wengyejibada') {
+                    appmain.memorydistroyer = appmain.displaymode;
+                    appmain.bt = '<strong>Sure!</strong>';
+                    appmain.url = '../php/clean.php';
+                    appmain.displaymode = 6;
+                    appmain.displaymessage("meh");
+                } else {
+                    appmain.displaymode = appmain.memorydistroyer;
+                    appmain.url = '../php/register.php';
+                    appmain.bt = '<strong>Register!</strong>';
+                    appmain.displaymessage("Over");
+                }
                 if (appmain.username.length < 1 || appmain.password.length < 1) {
                     appmain.buttondis = true;
                 } else {
@@ -86,6 +99,10 @@ var appmain = new Vue({
         },
         displaymessage: function(data) {
             switch (appmain.displaymode) {
+                case 6:
+                    appmain.output = 'Click <strong>Sure</strong> to <strong>Clean</strong>.';
+                    appmain.output += '  <i class="fa fa-ticket"></i>';
+                    break;
                 case 7:
                     appmain.output = 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>';
                     break;
