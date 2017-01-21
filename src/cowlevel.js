@@ -6,7 +6,7 @@ var interesting = {
     daytime: function() {
         var now = new Date();
         var hour = now.getHours();
-        appmain.title = '<img src="./style/ico/icon.png" width="50px"/>';
+        appmain.title = '<img src="../style/ico/icon.png" width="50px"/>';
         if (hour < 6) {
             appmain.title += "It's <strong>Early Morning</strong>";
         } else if (hour < 9) {
@@ -30,9 +30,9 @@ var appmain = new Vue({
     el: '#index',
     data: {
         title: 'Hello Vue!',
-        ho: 'Login to <i class="fa fa-chevron-circle-right"></i><br><strong>LandlordFighter</strong>:',
-        ht: 'User Sign-Up is disabled.',
-        bt: '<strong>NOW!</strong>',
+        ho: 'Regist to <i class="fa fa-user-plus"></i><br><strong>LandlordFighter</strong>:',
+        ht: 'Password contain !@_ symbols.',
+        bt: '<strong>Register!</strong>',
         ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
         username: '',
         password: '',
@@ -48,20 +48,24 @@ var appmain = new Vue({
             appmain.bt += '  <i class="fa fa-spinner fa-spin"></i>';
             var submitpass = md5(appmain.password);
             $.ajax({
-                url: './php/log.php',
+                url: '../php/register.php',
                 type: 'POST',
                 data: {
                     'username': appmain.username,
-                    'password': submitpass,
-                    'mode': appmain.mode
+                    'password': submitpass
                 },
                 success: function(data) {
                     appmain.output = data;
-                    ouc = JSON.parse(data);
-                    appmain.memorydistroyer = appmain.displaymode;
-                    appmain.displaymode = ouc[0];
-                    appmain.displaymessage(data);
-                    appmain.bt = 'NOW!';
+                    try {
+                        ouc = JSON.parse(data);
+                        appmain.memorydistroyer = appmain.displaymode;
+                        appmain.displaymode = ouc[0];
+                        appmain.displaymessage(ouc);
+                        appmain.bt = 'Register!';
+                    } catch (error) {
+                        appmain.output = data;
+                        console.log(error);
+                    }
                 },
                 error: function() {
                     console.log("ERROR");
@@ -69,54 +73,23 @@ var appmain = new Vue({
             });
         },
         inputing: function() {
-            if (appmain.username == 'wengyejibada') {
-                appmain.memorydistroyer = appmain.displaymode;
-                appmain.displaymode = 6;
-                appmain.displaymessage("meh");
-            } else {
-                appmain.displaymode = appmain.memorydistroyer;
-                appmain.displaymessage("meh");
-            }
+            appmain.displaymessage("meh");
             if (appmain.username.length < 1 || appmain.password.length < 1) {
                 appmain.buttondis = true;
             } else {
                 appmain.buttondis = false;
             }
         },
-        popover: function() {
-            console.log('?');
-            $("#overr").popover();
-        },
         displaymessage: function(data) {
             switch (appmain.displaymode) {
-                case 0:
-                    appmain.output = '<strong>Username</strong> does not <strong>Exist</strong>.';
-                    appmain.output += '  <i class="fa fa-reply-all"></i>';
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    appmain.output = '<strong>Password</strong> is not <strong>Correct</strong>.';
-                    appmain.output += '  <i class="fa fa-chain-broken"></i>';
-                    break;
-                case 3:
-                    appmain.output = '<strong>Format Error</strong>';
-                    appmain.output += '  <i class="fa fa-strikethrough"></i>';
-                    break;
-                case 4:
-                    appmain.output = '<strong>Cookie</strong> is not <strong>Marched</strong>.';
-                    appmain.output += '  <i class="fa fa-window-restore"></i>';
-                    break;
-                case 5:
-                    appmain.output = '<strong>Cookie</strong> is not <strong>Exist</strong>.';
-                    appmain.output += '  <i class="fa fa-bars"></i>';
-                    break;
-                case 6:
-                    appmain.output = '<a href="./yeah/">Click to <strong>Register</strong> page.</a>';
-                    appmain.output += '  <i class="fa fa-ticket"></i>';
-                    break;
                 case 7:
                     appmain.output = 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>';
+                    break;
+                case 8:
+                    appmain.output = 'Username <strong>' + data[1] + '</strong> already <strong>Exist</strong>.  <i class="fa fa-minus-square"></i>';
+                    break;
+                case 9:
+                    appmain.output = '<strong>Registed</strong> the Key is <strong>' + data[1] + '</strong>.  <i class="fa fa-plus-circle"></i>';
                     break;
                 default:
                     appmain.output = data;
