@@ -1,3 +1,6 @@
+(function() {
+    'use strict';
+}());
 var foot = new Vue({
     el: '#foot',
     data: {
@@ -20,7 +23,9 @@ var main = new Vue({
     el: '#main',
     data: {
         cardone: window.Poker.getCardData(157, 'd', 'JOKER'),
-        cardtwo: window.Poker.getCardData(157, 'd', 'JOKER')
+        cardtwo: window.Poker.getCardData(157, 'd', 'JOKER'),
+        current: 'Joker Boomer',
+        display: 'Joker Boomer'
     },
     methods: {
 

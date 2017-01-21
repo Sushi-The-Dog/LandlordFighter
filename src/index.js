@@ -62,8 +62,7 @@ var appmain = new Vue({
                         ouc = JSON.parse(data);
                         appmain.memorydistroyer = appmain.displaymode;
                         appmain.displaymode = ouc[0];
-                        appmain.displaymessage(data);
-                        appmain.bt = 'NOW!';
+                        appmain.displaymessage(ouc);
                     } catch (error) {
                         appmain.output = data;
                         console.log(error);
@@ -101,31 +100,51 @@ var appmain = new Vue({
                 case 0:
                     appmain.output = '<strong>Username</strong> does not <strong>Exist</strong>.';
                     appmain.output += '  <i class="fa fa-reply-all"></i>';
+                    appmain.bt = 'NOW!';
                     break;
                 case 1:
+                    appmain.output = '<strong>Welcome ' + data[1] + '</strong>.';
+                    appmain.output += '  <i class="fa fa-ravelry"></i>';
+                    appmain.bt = 'Completed!';
                     appmain.completeed = true;
+                    $.ajax({
+                        url: './php/sleep.php',
+                        type: 'GET',
+                        data: {},
+                        success: function(data) {
+                            window.location.href = './game/';
+                        },
+                        error: function() {
+                            console.log("ERROR");
+                        }
+                    });
                     break;
                 case 2:
                     appmain.output = '<strong>Password</strong> is not <strong>Correct</strong>.';
                     appmain.output += '  <i class="fa fa-chain-broken"></i>';
+                    appmain.bt = 'NOW!';
                     break;
                 case 3:
                     appmain.output = '<strong>Format Error</strong>';
                     appmain.output += '  <i class="fa fa-strikethrough"></i>';
+                    appmain.bt = 'NOW!';
                     break;
                 case 4:
                     appmain.output = '<strong>Cookie</strong> is not <strong>Marched</strong>.';
                     appmain.output += '  <i class="fa fa-window-restore"></i>';
                     appmain.completeed = true;
+                    appmain.bt = 'Error!';
                     break;
                 case 5:
                     appmain.output = '<strong>Cookie</strong> is not <strong>Exist</strong>.';
                     appmain.output += '  <i class="fa fa-bars"></i>';
                     appmain.completeed = true;
+                    appmain.bt = 'Stop Trying!';
                     break;
                 case 6:
                     appmain.output = '<a href="./yeah/">Click to <strong>Register</strong> page.</a>';
                     appmain.output += '  <i class="fa fa-ticket"></i>';
+                    appmain.bt = 'NOW!';
                     break;
                 case 7:
                     appmain.output = 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>';

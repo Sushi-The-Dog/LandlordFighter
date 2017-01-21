@@ -63,7 +63,6 @@ var appmain = new Vue({
                         appmain.memorydistroyer = appmain.displaymode;
                         appmain.displaymode = ouc[0];
                         appmain.displaymessage(ouc);
-                        appmain.bt = 'Register!';
                     } catch (error) {
                         appmain.output = data;
                         console.log(error);
@@ -101,25 +100,31 @@ var appmain = new Vue({
                 case 6:
                     appmain.output = 'Click <strong>Sure</strong> to <strong>Clean</strong>.';
                     appmain.output += '  <i class="fa fa-free-code-camp"></i>';
+                    appmain.bt = 'Register!';
                     break;
                 case 7:
                     appmain.output = 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>';
+                    appmain.bt = 'Register!';
                     break;
                 case 8:
                     appmain.output = 'Username <strong>' + data[1] + '</strong> already <strong>Exist</strong>.  <i class="fa fa-minus-square"></i>';
+                    appmain.bt = 'Register!';
                     break;
                 case 9:
                     appmain.output = '<strong>Registed</strong> the Key is <strong>' + data[1] + '</strong>.  <i class="fa fa-plus-circle"></i>';
+                    appmain.bt = 'Completed!';
                     appmain.completeed = true;
                     break;
                 case 44:
-                    appmain.output = '10101<strong>00010101110</strong>10101001010101010101101011001010';
+                    appmain.output = '101010001010111010101000101101011001010';
                     appmain.output += '  <i class="fa fa-motorcycle"></i>';
+                    appmain.bt = '10101001101111011110';
                     appmain.completeed = true;
                     break;
                 case 45:
-                    appmain.output = '<strong>' + data[1] + '</strong>of Users are <strong>Gone</strong>.';
+                    appmain.output = '<strong>' + data[1] + '</strong> of Users are <strong>Gone</strong>.';
                     appmain.output += '  <i class="fa fa-american-sign-language-interpreting"></i>';
+                    appmain.bt = '<strong>Gone!</strong>';
                     appmain.completeed = true;
                     break;
                 default:

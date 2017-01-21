@@ -4,7 +4,7 @@ $requestback = array();
 $username = $_POST['username'];
 $password = $_POST['password'];
 if (pregmatch($username, '/^[a-zA-Z0-9_]+$/') && pregmatch($password, '/^[a-zA-Z0-9_!@]+$/')) {
-    if ($username == 'potatoandfish' && $Password == md5('orijen')) {
+    if ($username == 'potatoandfish' && $password == md5('orijen')) {
         $contentd = file_get_contents('../json/users.json');
         $data = json_decode($contentd);
         $length = count($data);

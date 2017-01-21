@@ -2,6 +2,6 @@
     'use strict';
 }());
 jQuery(document).ready(function() {
-    $.backstretch("../style/img/backgrounds/gaming_poker_cards.jpg");
+    $.backstretch("../style/img/backgrounds/img_987409.jpg");
     interesting.daytime();
 });
