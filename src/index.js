@@ -40,11 +40,12 @@ var appmain = new Vue({
         mode: 0,
         displaymode: 7,
         memorydistroyer: 7,
-        buttondis: true
+        buttondis: true,
+        completeed: false
     },
     methods: {
         login: function() {
-            appmain.buttondis = false;
+            appmain.buttondis = true;
             appmain.bt += '  <i class="fa fa-spinner fa-spin"></i>';
             var submitpass = md5(appmain.password);
             $.ajax({
@@ -57,11 +58,18 @@ var appmain = new Vue({
                 },
                 success: function(data) {
                     appmain.output = data;
-                    ouc = JSON.parse(data);
-                    appmain.memorydistroyer = appmain.displaymode;
-                    appmain.displaymode = ouc[0];
-                    appmain.displaymessage(data);
-                    appmain.bt = 'NOW!';
+                    try {
+                        ouc = JSON.parse(data);
+                        appmain.memorydistroyer = appmain.displaymode;
+                        appmain.displaymode = ouc[0];
+                        appmain.displaymessage(data);
+                        appmain.bt = 'NOW!';
+                        appmain.completeed = true;
+                    } catch (error) {
+                        appmain.output = data;
+                        console.log(error);
+                    }
+
                 },
                 error: function() {
                     console.log("ERROR");
@@ -69,18 +77,20 @@ var appmain = new Vue({
             });
         },
         inputing: function() {
-            if (appmain.username == 'wengyejibada') {
-                appmain.memorydistroyer = appmain.displaymode;
-                appmain.displaymode = 6;
-                appmain.displaymessage("meh");
-            } else {
-                appmain.displaymode = appmain.memorydistroyer;
-                appmain.displaymessage("meh");
-            }
-            if (appmain.username.length < 1 || appmain.password.length < 1) {
-                appmain.buttondis = true;
-            } else {
-                appmain.buttondis = false;
+            if (!appmain.completeed) {
+                if (appmain.username == 'wengyejibada') {
+                    appmain.memorydistroyer = appmain.displaymode;
+                    appmain.displaymode = 6;
+                    appmain.displaymessage("meh");
+                } else {
+                    appmain.displaymode = appmain.memorydistroyer;
+                    appmain.displaymessage("meh");
+                }
+                if (appmain.username.length < 1 || appmain.password.length < 1) {
+                    appmain.buttondis = true;
+                } else {
+                    appmain.buttondis = false;
+                }
             }
         },
         popover: function() {
