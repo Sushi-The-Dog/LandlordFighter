@@ -31,7 +31,7 @@ var appmain = new Vue({
     data: {
         title: 'Hello Vue!',
         ho: 'Regist to <i class="fa fa-user-plus"></i><br><strong>LandlordFighter</strong>:',
-        ht: 'Password contain !@_ symbols.',
+        ht: 'Password contain !@_ symbols. <i class="fa fa-gg-circle"></i>',
         bt: '<strong>Register!</strong>',
         ann: 'LandlordFighter is a close register site until now. Send Email to request@wmpcxpy.com for account open',
         username: '',
@@ -64,7 +64,6 @@ var appmain = new Vue({
                         appmain.displaymode = ouc[0];
                         appmain.displaymessage(ouc);
                         appmain.bt = 'Register!';
-                        appmain.completeed = true;
                     } catch (error) {
                         appmain.output = data;
                         console.log(error);
@@ -78,7 +77,7 @@ var appmain = new Vue({
         inputing: function() {
             appmain.displaymessage("meh");
             if (!appmain.completeed) {
-                if (appmain.username == 'wengyejibada') {
+                if (appmain.username == 'potatoandfish') {
                     appmain.memorydistroyer = appmain.displaymode;
                     appmain.bt = '<strong>Sure!</strong>';
                     appmain.url = '../php/clean.php';
@@ -101,7 +100,7 @@ var appmain = new Vue({
             switch (appmain.displaymode) {
                 case 6:
                     appmain.output = 'Click <strong>Sure</strong> to <strong>Clean</strong>.';
-                    appmain.output += '  <i class="fa fa-ticket"></i>';
+                    appmain.output += '  <i class="fa fa-free-code-camp"></i>';
                     break;
                 case 7:
                     appmain.output = 'We are in <strong>Developing</strong> mode.  <i class="fa fa-github-square"></i>';
@@ -111,6 +110,17 @@ var appmain = new Vue({
                     break;
                 case 9:
                     appmain.output = '<strong>Registed</strong> the Key is <strong>' + data[1] + '</strong>.  <i class="fa fa-plus-circle"></i>';
+                    appmain.completeed = true;
+                    break;
+                case 44:
+                    appmain.output = '10101<strong>00010101110</strong>10101001010101010101101011001010';
+                    appmain.output += '  <i class="fa fa-motorcycle"></i>';
+                    appmain.completeed = true;
+                    break;
+                case 45:
+                    appmain.output = '<strong>' + data[1] + '</strong>of Users are <strong>Gone</strong>.';
+                    appmain.output += '  <i class="fa fa-american-sign-language-interpreting"></i>';
+                    appmain.completeed = true;
                     break;
                 default:
                     appmain.output = data;

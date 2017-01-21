@@ -64,7 +64,6 @@ var appmain = new Vue({
                         appmain.displaymode = ouc[0];
                         appmain.displaymessage(data);
                         appmain.bt = 'NOW!';
-                        appmain.completeed = true;
                     } catch (error) {
                         appmain.output = data;
                         console.log(error);
@@ -104,6 +103,7 @@ var appmain = new Vue({
                     appmain.output += '  <i class="fa fa-reply-all"></i>';
                     break;
                 case 1:
+                    appmain.completeed = true;
                     break;
                 case 2:
                     appmain.output = '<strong>Password</strong> is not <strong>Correct</strong>.';
@@ -116,10 +116,12 @@ var appmain = new Vue({
                 case 4:
                     appmain.output = '<strong>Cookie</strong> is not <strong>Marched</strong>.';
                     appmain.output += '  <i class="fa fa-window-restore"></i>';
+                    appmain.completeed = true;
                     break;
                 case 5:
                     appmain.output = '<strong>Cookie</strong> is not <strong>Exist</strong>.';
                     appmain.output += '  <i class="fa fa-bars"></i>';
+                    appmain.completeed = true;
                     break;
                 case 6:
                     appmain.output = '<a href="./yeah/">Click to <strong>Register</strong> page.</a>';
