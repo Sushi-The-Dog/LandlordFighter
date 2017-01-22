@@ -1,19 +1,28 @@
 <?php
 // update: make this common
 require_once '../vendor/autoload.php';
+require_once '../socket/ingame.php';
 use Workerman\Worker;
 use PHPSocketIO\SocketIO;
 
 $io = new SocketIO(3120);
+$useramount = 0;
 // 当有客户端连接时打印一行文字
 // connect
 $io->on('connection', function ($connection) use ($io) {
+  global $useramount;
+  ++$useramount;
+  echo 'Users:'.$useramount;
   var_dump($connection->conn->remoteAddress);
-  echo 'Conn\n';
   $connection->on('chat message', function ($msg) use ($io) {
       // 触发所有客户端定义的chat message from server事件
     $io->emit('chat message from server', $msg);
-    echo $msg.'\n';
+    echo $msg.'\r\n';
+  });
+  $connection->on('disconnect', function ($msg) use ($io) {
+    global $useramount;
+    +--$useramount;
+    echo 'Users:'.$useramount;
   });
 });
 Worker::runAll();
