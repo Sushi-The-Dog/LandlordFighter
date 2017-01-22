@@ -8,11 +8,12 @@ var connect = {
             console.log('connect success');
         });
         connect.socket.on('chat message from server', function(msg) {
-            console.log('get message:' + msg + ' from server');
+            console.log(msg);
         });
     },
     send: function(content) {
-        connect.socket.emit('chat message', content);
+        connect.socket.emit('message', content);
+        console.log('done');
     }
 };
 connect.runf();
