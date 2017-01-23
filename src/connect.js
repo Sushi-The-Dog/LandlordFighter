@@ -13,6 +13,15 @@ var connect = {
         connect.socket.on('reg complete', function(msg) {
             console.log(msg);
         });
+        connect.socket.on('start', function(msg) {
+            console.log(msg);
+        });
+        connect.socket.on('full', function(msg) {
+            console.log(msg);
+        });
+        connect.socket.on('userleft', function(msg) {
+            console.log(msg);
+        });
         connect.reg();
     },
     send: function(content) {

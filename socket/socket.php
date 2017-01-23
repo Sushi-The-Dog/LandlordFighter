@@ -9,6 +9,8 @@ use PHPSocketIO\SocketIO;
 
 $io = new SocketIO(3120);
 $usernames = array();
+$waitinglist = array();
+$cards = new cards();
 // 当有客户端连接时打印一行文字
 // connect
 $io->on('connection', function ($connection) use ($io) {
@@ -22,14 +24,25 @@ $io->on('connection', function ($connection) use ($io) {
     // $connection->emit('chat message from server', $msg);
     // $io->emit('chat message from server', $msg);
   });
-  $connection->on('user reg', function ($username) use ($connection) {
-    global $usernames;
-    $usernames[$username] = $username;
-    $connection->addedUser = true;
-    $connection->username = $username;
-    var_dump($connection->username);
+  $connection->on('user reg', function ($username) use ($connection, $io) {
+    global $usernames, $waitinglist;
+    if (count($usernames < 2)) {
+        $usernames[$username] = $username;
+        $connection->addedUser = true;
+        $connection->username = $username;
+        $connection->emit('reg complete', $username);
+        $connection->join('table');
+        if (count($usernames) == 2) {
+            $io->to('table')->emit('start', count($usernames));
+        } else {
+            $connection->emit('wait', count($usernames));
+        }
+    } else {
+        $connection->join('waiting');
+        $waitinglist[$username] = $username;
+        $connection->emit('full', $username);
+    }
     var_dump($usernames);
-    $connection->emit('reg complete', $username);
   });
   $connection->on('disconnect', function ($msg) use ($connection) {
     global $usernames;
