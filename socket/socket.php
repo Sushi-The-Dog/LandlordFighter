@@ -12,6 +12,7 @@ $usernames = array();
 // 当有客户端连接时打印一行文字
 // connect
 $io->on('connection', function ($connection) use ($io) {
+  $connection->addedUser = false;
   echo 'C';
   $connection->on('message', function ($msg) {
     echo 'M';
@@ -21,12 +22,25 @@ $io->on('connection', function ($connection) use ($io) {
     // $connection->emit('chat message from server', $msg);
     // $io->emit('chat message from server', $msg);
   });
-  $connection->on('user reg', function ($username) use ($connection, $io) {
-
-    // $connection->emit('chat message from server', $msg);
-    // $io->emit('chat message from server', $msg);
+  $connection->on('user reg', function ($username) use ($connection) {
+    global $usernames;
+    $usernames[$username] = $username;
+    $connection->addedUser = true;
+    $connection->username = $username;
+    var_dump($connection->username);
+    var_dump($usernames);
+    $connection->emit('reg complete', $username);
   });
-  $connection->on('disconnect', function ($msg) use ($io) {
+  $connection->on('disconnect', function ($msg) use ($connection) {
+    global $usernames;
+    if ($connection->addedUser) {
+        unset($usernames[$connection->username]);
+        $connection->broadcast->emit('user left', array(
+               'username' => $connection->username,
+               'numUsers' => count($usernames),
+            ));
+    }
+    var_dump($usernames);
     echo 'D';
   });
 });

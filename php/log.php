@@ -16,6 +16,7 @@ if (!isset($_COOKIE['username']) || $mode == 1) {
             if ($data[$x][0] == $username) {
                 if ($data[$x][1] == $md5) {
                     array_push($requestback, 1, $username);
+                    $_SESSION['username'] = $username;
                     break;
                 } else {
                     array_push($requestback, 2, $username);
