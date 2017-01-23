@@ -11,7 +11,6 @@ $io = new SocketIO(3120);
 $usernames = array();
 $waitinglist = array();
 $cards = new cards();
-// 当有客户端连接时打印一行文字
 // connect
 $io->on('connection', function ($connection) use ($io) {
   $connection->addedUser = false;

@@ -16,13 +16,15 @@ var foot = new Vue({
     methods: {
         test: function() {
             main.cardone = window.Poker.getCardData(157, 'd', 'JOKER');
+            console.log(window.Poker.getCardData(157, 'd', 'JOKER'));
+
         }
     }
 });
 var main = new Vue({
     el: '#main',
     data: {
-        cardone: window.Poker.getCardData(157, 'd', 'JOKER'),
+        cardone: window.Poker.getCardData(157, 'd', '8'),
         cardtwo: window.Poker.getCardData(157, 'd', 'JOKER'),
         current: 'Joker Boomer',
         display: 'Joker Boomer'
