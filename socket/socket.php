@@ -39,6 +39,7 @@ $io->on('connection', function ($connection) use ($io) {
     } else {
         $connection->join('waiting');
         $waitinglist[$username] = $username;
+        $connection->broadcast->emit('list', $username);
         $connection->emit('full', $username);
     }
     var_dump($usernames);

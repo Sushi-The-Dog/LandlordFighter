@@ -67,8 +67,36 @@ body {
 .footer-meng {
     position: absolute;
     bottom: 0;
-    padding: 45px;
+    padding: 6.5%;
     width: 100%;
+}
+
+.main-meng {
+    padding: 7.5%;
+    width: 100%;
+}
+
+.header-meng {
+    padding: 0.5%;
+    width: 100%;
+}
+
+.panel-button {
+    padding: 0 0 0 10%;
+    text-align: left;
+}
+
+.main-ps {
+    padding: 0 0 0 10%;
+    text-align: left;
+}
+
+.fill-it-up {
+    text-align: center;
+}
+
+.fill-it-devide {
+    word-spacing: 10px;
 }
 
 
