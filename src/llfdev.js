@@ -2,8 +2,11 @@
     'use strict';
 }());
 var defind = {
-    cardsize: 55,
-    handsize: 157
+    cardsize: 75,
+    handsize: 157,
+    start: function() {
+        opponentl.userin(['who', 78600], 1);
+    }
 };
 var foot = new Vue({
     el: '#foot',
@@ -40,12 +43,21 @@ var main = new Vue({
 var players = new Vue({
     el: '#players',
     data: {
-        waitinglist: ['testone', 'test2'],
-        ingamelist: ['tplayer', 'who'],
+        waitinglist: [
+            ['testone', 6800],
+            ['two', 4500]
+        ],
+        ingamelist: [
+            ['WEI', 150],
+            ['who', 78600]
+        ],
         waitdisplay: 0,
         ingamedisplay: 0
     },
     methods: {
+        playersin: function(user) {
+
+        },
         update: function() {
             players.waitdisplay = players.waitinglist.length;
             players.ingamedisplay = players.ingamelist.length;
@@ -55,10 +67,55 @@ var players = new Vue({
 var opponentl = new Vue({
     el: '#opponentl',
     data: {
-        oppon: []
+        display: '',
+        introone: '',
+        introtwo: '',
+        actionone: '',
+        actiontwo: ''
     },
     methods: {
+        userin: function(user, location) {
+            opponentl.updateintro(user, location);
+            opponentl.updateaction('<i class="fa fa-hand-spock-o"></i> Just<strong>Came in</strong>', location);
+            opponentl.update();
+        },
+        updateintro: function(user, location) {
+            var id = user[0];
+            var chips = user[1];
+            switch (location) {
+                case 1:
+                    opponentl.introone = 'ID: <strong>' + id +
+                        '</strong><br>Chips: <strong><i class="fa fa-money"></i> ' +
+                        chips + '</strong><hr>';
+                    break;
+                case 2:
+                    opponentl.introtwo = 'ID: <strong>' + id +
+                        '</strong><br>Chips: <strong><i class="fa fa-money"></i> ' +
+                        chips + '</strong><hr>';
+                    break;
+            }
+        },
+        bet: function(amount, location) {
 
+        },
+        updateaction: function(string, location) {
+            switch (location) {
+                case 1:
+                    opponentl.actionone = string + '<hr>';
+                    break;
+                case 2:
+                    opponentl.actiontwo = string;
+                    break;
+            }
+        },
+        userout: function() {
+
+        },
+        update: function() {
+            opponentl.display = '<strong>Opponents</strong><hr>' +
+                opponentl.introone + opponentl.actionone +
+                opponentl.introtwo + opponentl.actiontwo;
+        }
     }
 });
 var opponentr = new Vue({
@@ -122,3 +179,4 @@ var title = new Vue({
         }
     }
 });
+defind.start();
