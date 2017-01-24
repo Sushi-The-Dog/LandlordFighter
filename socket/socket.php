@@ -25,24 +25,28 @@ $io->on('connection', function ($connection) use ($io) {
   });
   $connection->on('user reg', function ($username) use ($connection, $io) {
     global $usernames, $waitinglist;
-    if (count($usernames < 2)) {
-        $usernames[$username] = $username;
-        $connection->addedUser = true;
-        $connection->username = $username;
-        $connection->emit('reg complete', $username);
-        $connection->join('table');
-        if (count($usernames) == 2) {
-            $io->to('table')->emit('start', count($usernames));
+    $getaccount = getaccount($username);
+    if ($getaccount[0] == 1) {
+        if (count($usernames < 2)) {
+            $usernames[$username] = $getaccount;
+            $connection->addedUser = true;
+            $connection->username = $username;
+            $re = array($usernames, $username);
+            $connection->emit('reg complete', $re);
+            $connection->join('table');
+            if (count($usernames) == 2) {
+                $io->to('table')->emit('start', count($usernames));
+            } else {
+                $connection->emit('wait', count($usernames));
+            }
         } else {
-            $connection->emit('wait', count($usernames));
+            $connection->join('waiting');
+            $waitinglist[$username] = $username;
+            $connection->broadcast->emit('list', $username);
+            $connection->emit('full', $username);
         }
-    } else {
-        $connection->join('waiting');
-        $waitinglist[$username] = $username;
-        $connection->broadcast->emit('list', $username);
-        $connection->emit('full', $username);
+        var_dump($usernames);
     }
-    var_dump($usernames);
   });
   $connection->on('disconnect', function ($msg) use ($connection) {
     global $usernames;

@@ -11,7 +11,29 @@ var connect = {
             console.log(msg);
         });
         connect.socket.on('reg complete', function(msg) {
-            console.log(msg);
+            var size = 0;
+            for (var key in msg[0]) {
+                if (msg[0].hasOwnProperty(key)) {
+                    size++;
+                }
+            }
+            if (size == 2) {
+                for (var value in msg[0]) {
+                    if (value == msg[1]) {
+                        foot.users = value;
+                        panel.chips = msg[0][value][1];
+                        title.update();
+                    } else {
+                        opponentl.userin([value, msg[0][value][1]], 1);
+                    }
+                }
+            } else if (size == 1) {
+                for (var my in msg[0]) {
+                    foot.users = my;
+                    panel.chips = msg[0][my][1];
+                    title.update();
+                }
+            }
         });
         connect.socket.on('start', function(msg) {
             console.log(msg);

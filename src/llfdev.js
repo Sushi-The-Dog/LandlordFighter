@@ -11,7 +11,7 @@ var defind = {
 var foot = new Vue({
     el: '#foot',
     data: {
-        users: 'WEI',
+        users: 'Loading',
         chips: 150,
         actions: ['Bet', 'Call', 'Fall'],
         amounts: [10, 20, 30],
@@ -142,7 +142,7 @@ var pool = new Vue({
 var panel = new Vue({
     el: '#panel',
     data: {
-        chips: 5008,
+        chips: 0,
         one: '<i class="fa fa-superpowers"></i> Cash In',
         two: '<i class="fa fa-forumbee"></i> Cash Out',
         three: '<i class="fa fa-bandcamp"></i> Buy Chips',
@@ -176,6 +176,9 @@ var title = new Vue({
     methods: {
         logout: function() {
             console.log('logout');
+        },
+        update: function() {
+            title.right = 'Hello, <strong>' + foot.users + '</strong> <a type="button" v-on:click="logout">Log out</a>';
         }
     }
 });

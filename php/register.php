@@ -18,7 +18,7 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/') && pregmatch($password, '/^[a-zA-Z
     if (count($requestback) < 1) {
         $key = genkey(6);
         $user = array();
-        array_push($user, $username, $md5, $key);
+        array_push($user, $username, $md5, $key, 200);
         array_push($data, $user);
         $re = json_encode($data);
         file_put_contents('../json/users.json', $re);
