@@ -3,7 +3,35 @@
 // for sec we put card file in the cards.json
 class cards
 {
-    private $cards = array();
+    protected $cards = array();
+    public function __construct(){
+      $this->cards = array();
+      $colours = array(
+            'spade','heart','diamond','club'
+      );
+      $numbers = array(
+            'A','2','3','4','5','6','7','8','9','10','J','Q','K'
+      );
+      foreach ($colours as $color){
+        foreach ($numbers as $number){
+          $card = new card($color, $number);
+          array_push($this->cards, $card);
+        }
+      }
+    }
+
+    public function getCards(){
+      return $this->cards;
+    }
+
+    public function shuffle(){
+      shuffle($this->cards);
+      shuffle($this->cards);
+      shuffle($this->cards);
+      shuffle($this->cards);
+      shuffle($this->cards);
+    }
+    
     public function gencards($modes)
     {
         switch ($modes) {
@@ -56,4 +84,9 @@ function pregmatch($string)
     } else {
         return false;
     }
+}
+function make_seed()
+{
+  list($usec, $sec) = explode(' ', microtime());
+  return $sec + $usec * 1000000;
 }
