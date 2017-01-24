@@ -74,19 +74,19 @@ body {
 }
 
 .footer-meng {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    padding: 4%;
+    padding: 0 4% 2% 4%;
     width: 100%;
 }
 
 .main-meng {
-    padding: 4.5%;
+    padding: 4% 3% 0 5%;
     width: 100%;
 }
 
 .header-meng {
-    padding: 0.2%;
+    padding: 1% 1% 0 1%;
     width: 100%;
     color: #FFFFFF;
     font-size: 16px;
