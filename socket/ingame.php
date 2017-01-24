@@ -7,14 +7,14 @@ class cards
     public function __construct(){
       $this->cards = array();
       $colours = array(
-            'spade','heart','diamond','club'
+            'S','H','D','C'
       );
       $numbers = array(
-            'A','2','3','4','5','6','7','8','9','10','J','Q','K'
+            '01','02','03','04','05','06','07','08','09','10','11','12','13'
       );
       foreach ($colours as $color){
         foreach ($numbers as $number){
-          $card = new card($color, $number);
+          $card = $color.$number;
           array_push($this->cards, $card);
         }
       }
@@ -31,7 +31,7 @@ class cards
       shuffle($this->cards);
       shuffle($this->cards);
     }
-    
+
     public function gencards($modes)
     {
         switch ($modes) {
