@@ -24,7 +24,7 @@ $io->on('connection', function ($connection) use ($io) {
     // $io->emit('chat message from server', $msg);
   });
   $connection->on('user reg', function ($username) use ($connection, $io) {
-    global $usernames, $waitinglist;
+    global $usernames, $waitinglist, $cards;
     $getaccount = getaccount($username);
     if ($getaccount[0] == 1) {
         if (count($usernames < 2)) {
