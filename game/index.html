@@ -19,7 +19,8 @@
         <div class="row clearfix header-meng" id="title">
             <div class="col-md-6 column left-corner" v-html="left">
             </div>
-            <div class="col-md-6 column right-corner" v-html="right">
+            <div class="col-md-6 column right-corner">
+                Hello, <strong>{{right}}</strong> <a type="button" v-on:click="logout">Log out</a>
             </div>
         </div>
         <div class="row clearfix main-meng">
@@ -71,7 +72,7 @@
             </div>
             <div class="col-md-2 column well" id="panel">
                 <strong>My Account</strong>
-                <hr> Account Chips Count: <br><i class="fa fa-money"></i> <strong>{{chips}}</strong>
+                <hr> Account Chips Balance: <br><i class="fa fa-money"></i> <strong>{{chips}}</strong>
                 <hr>
                 <strong>Actions</strong>
                 <hr>

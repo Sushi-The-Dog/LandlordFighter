@@ -8,14 +8,18 @@ var defind = {
         opponentl.userin(['who', 78600], 1);
     }
 };
+var definds = {
+    cardback: window.Poker.getBackData(defind.cardsize, '#8F9396', '#5C6063'),
+    large: window.Poker.getBackData(defind.handsize, '#8F9396', '#5C6063')
+};
 var foot = new Vue({
     el: '#foot',
     data: {
         users: 'Loading',
-        chips: 150,
-        actions: ['Bet', 'Call', 'Fall'],
-        amounts: [10, 20, 30],
-        allin: 270,
+        chips: 0,
+        actions: ['', '', ''],
+        amounts: [0, 0, 0],
+        allin: 0,
         buttonone: '',
         buttontwo: '',
         buttonthr: ''
@@ -24,17 +28,14 @@ var foot = new Vue({
         test: function() {
             main.cardone = window.Poker.getCardData(157, 'd', 'JOKER');
             console.log(window.Poker.getCardData(157, 'd', 'JOKER'));
-
         }
     }
 });
 var main = new Vue({
     el: '#main',
     data: {
-        cardone: window.Poker.getCardData(defind.handsize, 'd', '8'),
-        cardtwo: window.Poker.getCardData(defind.handsize, 'd', 'JOKER'),
-        current: 'Joker Boomer',
-        display: 'Joker Boomer'
+        cardone: definds.large,
+        cardtwo: definds.large
     },
     methods: {
 
@@ -43,14 +44,8 @@ var main = new Vue({
 var players = new Vue({
     el: '#players',
     data: {
-        waitinglist: [
-            ['testone', 6800],
-            ['two', 4500]
-        ],
-        ingamelist: [
-            ['WEI', 150],
-            ['who', 78600]
-        ],
+        waitinglist: [],
+        ingamelist: [],
         waitdisplay: 0,
         ingamedisplay: 0
     },
@@ -67,11 +62,13 @@ var players = new Vue({
 var opponentl = new Vue({
     el: '#opponentl',
     data: {
-        display: '',
+        display: '<i class="fa fa-camera-retro fa-rotate-90"></i> Waiting For Game',
         introone: '',
         introtwo: '',
         actionone: '',
-        actiontwo: ''
+        actiontwo: '',
+        user: '',
+        chips: 0
     },
     methods: {
         userin: function(user, location) {
@@ -131,11 +128,11 @@ var pool = new Vue({
     el: '#pool',
     data: {
         current: '<i class="fa fa-angle-right"></i> FLOP',
-        card1: window.Poker.getCardData(defind.cardsize, 'd', 'A'),
-        card2: window.Poker.getCardData(defind.cardsize, 'd', 'A'),
-        card3: window.Poker.getCardData(defind.cardsize, 'd', 'JOKER'),
-        card4: window.Poker.getBackData(defind.cardsize, '#8F9396', '#5C6063'),
-        card5: window.Poker.getBackData(defind.cardsize, '#8F9396', '#5C6063')
+        card1: definds.cardback,
+        card2: definds.cardback,
+        card3: definds.cardback,
+        card4: definds.cardback,
+        card5: definds.cardback
     },
     methods: {}
 });
@@ -151,7 +148,27 @@ var panel = new Vue({
     },
     methods: {
         ones: function() {
-            console.log(window.Poker.getCardData(defind.cardsize, 'd', 'JOKER'));
+            layer.prompt({
+                title: 'Buy in',
+                btn: ['<strong>Confirm</strong>', 'Cancel'],
+                formType: 3
+            }, function(amount, index) {
+                layer.close(index);
+                if (!isNaN(amount)) {
+                    if (amount <= panel.chips) {
+                        panel.chips -= amount;
+                        foot.chips += parseInt(amount);
+                    } else {
+                        layer.msg('Not Enough Chips', {
+                            anim: 5
+                        });
+                    }
+                } else {
+                    layer.msg('Input Have to be a Number', {
+                        anim: 5
+                    });
+                }
+            });
         },
         twos: function() {
 
@@ -171,15 +188,14 @@ var title = new Vue({
     el: '#title',
     data: {
         left: '<strong>LandlordFighter</strong>',
-        right: 'Hello, <strong>' + foot.users + '</strong> <a type="button" v-on:click="logout">Log out</a>'
+        right: foot.users
     },
     methods: {
         logout: function() {
             console.log('logout');
         },
         update: function() {
-            title.right = 'Hello, <strong>' + foot.users + '</strong> <a type="button" v-on:click="logout">Log out</a>';
+            title.right = foot.users;
         }
     }
 });
-defind.start();

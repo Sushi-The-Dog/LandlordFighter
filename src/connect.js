@@ -37,6 +37,10 @@ var connect = {
         });
         connect.socket.on('start', function(msg) {
             console.log(msg);
+            layer.msg('<i class="fa fa-cog"></i> <strong>Game</strong><p class="larger-text-meng">Game Start!</p>', {
+                anim: 5
+            });
+            
         });
         connect.socket.on('full', function(msg) {
             console.log(msg);

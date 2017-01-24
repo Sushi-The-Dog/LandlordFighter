@@ -24,6 +24,7 @@ h1, h2 {
 .larger-text-meng {
     font-size: 20px;
 }
+
 .xlarger-text-meng {
     font-size: 24px;
 }
@@ -87,6 +88,8 @@ body {
 .header-meng {
     padding: 0.2%;
     width: 100%;
+    color: #FFFFFF;
+    font-size: 16px;
 }
 
 .panel-button {
@@ -105,6 +108,11 @@ body {
 
 .fill-it-devide {
     word-spacing: 10px;
+}
+
+.well {
+    background-color: #CCCCCC;
+    border-color: #CC99CC;
 }
 
 

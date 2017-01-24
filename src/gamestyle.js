@@ -2,5 +2,5 @@
     'use strict';
 }());
 jQuery(document).ready(function() {
-    $.backstretch("../style/img/backgrounds/img_976171.jpg");
+    $.backstretch("../style/img/backgrounds/res001.jpg");
 });
