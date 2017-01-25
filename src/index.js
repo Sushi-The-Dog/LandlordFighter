@@ -107,17 +107,7 @@ var appmain = new Vue({
                     appmain.output += '  <i class="fa fa-ravelry"></i>';
                     appmain.bt = 'Completed!';
                     appmain.completeed = true;
-                    $.ajax({
-                        url: './php/sleep.php',
-                        type: 'GET',
-                        data: {},
-                        success: function(data) {
-                            window.location.href = './game/';
-                        },
-                        error: function() {
-                            console.log("ERROR");
-                        }
-                    });
+                    setTimeout(window.location.href = './game/', 3000);
                     break;
                 case 2:
                     appmain.output = '<strong>Password</strong> is not <strong>Correct</strong>.';
