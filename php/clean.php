@@ -14,7 +14,7 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/') && pregmatch($password, '/^[a-zA-Z
         array_push($requestback, 45, $length);
     } else {
         array_push($requestback, 44, 'WRONG');
-    }
+      }
 } else {
     array_push($requestback, 3, 'Error');
 }
