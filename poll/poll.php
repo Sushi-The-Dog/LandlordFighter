@@ -3,7 +3,7 @@ $username = $_POST['username'];
 if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
     $re = array();
     $timeout = 0;
-    while ($timeout < 15) {
+    while ($timeout < 7) {
         $changes = file_get_contents('../json/changes.json');
         $changes = json_decode($changes);
         $changes = clean($changes,$username);
@@ -12,7 +12,7 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
         for($x=0;$x<count($changes[1]);$x++){
             if($changes[1][$x][0] == $username){
                 $change = $t - $changes[1][$x][3];
-                if($change >= 1450){
+                if($change >= 3450){
                     $changes[1][$x][2] = array();
                     $changes[1][$x][3] = $t;
                     $hold = json_encode($changes);
@@ -27,7 +27,7 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
         if(count($data)>1){
             if ($data[1] == 0) {
                 $timeout++;
-                sleep(4);
+                sleep(3);
             }
             else {
                 for($x=0;$x<count($data[2]);$x++){
@@ -37,7 +37,7 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
                 $changes[1][$data[4]][1] = 0;
             }
         }else{
-            sleep(4);
+            sleep(3);
         }
     }
 }else{
@@ -64,13 +64,13 @@ function clean($changes,$username){
     $ptime = $changes[0][3];
     $change = $t - $ptime;
     if($change>=12500){
-        $changes[0][2] = $t;
+        $changes[0][3] = $t;
         $changes[0][0] = 0;
         $changes[0][1] = 0;
         $hold = json_encode($changes);
         file_put_contents('../json/changes.json', $hold);
     }else{
-        $changes[0][2] = $t;
+        $changes[0][3] = $t;
     }
     $change = $t - $ptime;
     return $changes;

@@ -17,7 +17,7 @@ if($changes[0][0] >= 2){
     echo json_encode(array(0,'full'));
 }else{
     $data = array();
-    for($x=0;$x=count($changes[1]);$x++){
+    for($x=0;$x<count($changes[1]);$x++){
         if($changes[1][$x][0]==$_SESSION['username']){
             $changes[1][$x][1] = 0;
             $changes[1][$x][2] = array();
