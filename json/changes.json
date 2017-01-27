@@ -1,1 +1,7 @@
-{"test":0}
+{
+    "test": {
+        "ischange": 0,
+        "area": "reg",
+        "msg": "this is a msg"
+    }
+}

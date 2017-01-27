@@ -10,6 +10,7 @@ var test = {
                 document.getElementById("output").innerHTML = data;
                 $("#output").val = data;
                 console.log(data);
+                test.test();
             },
             error: function () {}
         });
