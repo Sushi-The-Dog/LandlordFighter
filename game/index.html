@@ -24,26 +24,7 @@
             </div>
         </div>
         <div class="row clearfix main-meng">
-            <div class="col-md-1 column well" id="players">
-                <div class="main-ps">
-                    <i class="fa fa-id-badge"></i>
-                    <strong> {{ingamedisplay}}</strong>
-                    <hr>
-                    <p v-for="player in ingamelist">
-                        - {{player[0]}}
-                    </p>
-                    <hr>
-                    <i class="fa fa-telegram"></i>
-                    <strong> {{waitdisplay}}</strong>
-                    <hr>
-                    <p v-for="player in waitinglist">
-                        - {{player[0]}}
-                    </p>
-                </div>
-                <!-- //test passed -->
-                <!-- <button v-on:click="update">T</button> -->
-            </div>
-            <div class="col-md-9 column">
+            <div class="col-md-10 column">
                 <div class="col-md-3 column" id="opponentl">
                     <div class="well larger-text-meng">
                         <div v-html="display">
@@ -93,11 +74,11 @@
             <div class="col-md-8 column">
                 <div class="right-corner well" id="foot">
                     <h2>
-                    Chips:&nbsp;<i class="fa fa-money"></i>&nbsp;<strong>{{chips}}</strong>
-                  </h2>
+                        Chips:&nbsp;<i class="fa fa-money"></i>&nbsp;<strong>{{chips}}</strong>
+                    </h2>
                     <h3>
-                      {{users}}
-                  </h3>
+                        {{users}}
+                    </h3>
                     <img src="../style/ico/icon.png" width="42px">
                     <div class="btn-group dropup">
                         <a type="button" class="button button-action dropdown-toggle" data-toggle="dropdown">{{actions[0]}}

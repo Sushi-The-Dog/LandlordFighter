@@ -1,10 +1,10 @@
-(function() {
+(function () {
     'use strict';
 }());
 var defind = {
     cardsize: 75,
     handsize: 157,
-    start: function() {
+    start: function () {
         opponentl.userin(['who', 78600], 1);
     }
 };
@@ -25,7 +25,7 @@ var foot = new Vue({
         buttonthr: ''
     },
     methods: {
-        test: function() {
+        test: function () {
             main.cardone = window.Poker.getCardData(157, 'd', 'JOKER');
             console.log(window.Poker.getCardData(157, 'd', 'JOKER'));
         }
@@ -41,24 +41,6 @@ var main = new Vue({
 
     }
 });
-var players = new Vue({
-    el: '#players',
-    data: {
-        waitinglist: [],
-        ingamelist: [],
-        waitdisplay: 0,
-        ingamedisplay: 0
-    },
-    methods: {
-        playersin: function(user) {
-
-        },
-        update: function() {
-            players.waitdisplay = players.waitinglist.length;
-            players.ingamedisplay = players.ingamelist.length;
-        }
-    }
-});
 var opponentl = new Vue({
     el: '#opponentl',
     data: {
@@ -71,12 +53,12 @@ var opponentl = new Vue({
         chips: 0
     },
     methods: {
-        userin: function(user, location) {
+        userin: function (user, location) {
             opponentl.updateintro(user, location);
             opponentl.updateaction('<i class="fa fa-hand-spock-o"></i> Just<strong>Came in</strong>', location);
             opponentl.update();
         },
-        updateintro: function(user, location) {
+        updateintro: function (user, location) {
             var id = user[0];
             var chips = user[1];
             switch (location) {
@@ -92,10 +74,10 @@ var opponentl = new Vue({
                     break;
             }
         },
-        bet: function(amount, location) {
+        bet: function (amount, location) {
 
         },
-        updateaction: function(string, location) {
+        updateaction: function (string, location) {
             switch (location) {
                 case 1:
                     opponentl.actionone = string + '<hr>';
@@ -105,10 +87,10 @@ var opponentl = new Vue({
                     break;
             }
         },
-        userout: function() {
+        userout: function () {
 
         },
-        update: function() {
+        update: function () {
             opponentl.display = '<strong>Opponents</strong><hr>' +
                 opponentl.introone + opponentl.actionone +
                 opponentl.introtwo + opponentl.actiontwo;
@@ -147,12 +129,12 @@ var panel = new Vue({
         five: '<i class="fa fa-github-alt"></i> Test'
     },
     methods: {
-        ones: function() {
+        ones: function () {
             layer.prompt({
                 title: 'Buy in',
                 btn: ['<strong>Confirm</strong>', 'Cancel'],
                 formType: 3
-            }, function(amount, index) {
+            }, function (amount, index) {
                 layer.close(index);
                 if (!isNaN(amount)) {
                     if (amount <= panel.chips) {
@@ -170,16 +152,16 @@ var panel = new Vue({
                 }
             });
         },
-        twos: function() {
+        twos: function () {
 
         },
-        threes: function() {
+        threes: function () {
 
         },
-        fours: function() {
+        fours: function () {
 
         },
-        fives: function() {
+        fives: function () {
 
         }
     }
@@ -191,10 +173,10 @@ var title = new Vue({
         right: foot.users
     },
     methods: {
-        logout: function() {
+        logout: function () {
             console.log('logout');
         },
-        update: function() {
+        update: function () {
             title.right = foot.users;
         }
     }
