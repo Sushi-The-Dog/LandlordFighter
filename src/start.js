@@ -1,1 +1,1 @@
-poll.reg();
+defind.start();
