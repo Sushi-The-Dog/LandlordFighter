@@ -7,6 +7,7 @@ var poll = {
         $.ajax({
             url: '../poll/getusername.php',
             type: 'GET',
+            timeout: 3000,
             data: {},
             success: function (data) {
                 try {
@@ -32,6 +33,7 @@ var poll = {
         $.ajax({
             url: '../poll/poll.php',
             type: 'POST',
+            timeout: 75000,
             data: {
                 'username': username,
             },
