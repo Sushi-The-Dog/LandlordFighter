@@ -1,6 +1,6 @@
 <?php
+session_start();
 $username = $_POST['username'];
-
 if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
     $re = array();
     $timeout = 0;

@@ -9,9 +9,19 @@ var poll = {
             type: 'GET',
             data: {},
             success: function (data) {
-                console.log('Connect Success');
-                poll.username = data;
-                poll.request(data);
+                try {
+                    data = JSON.parse(data);
+                    if (data[0] == 0) {
+                        console.log('full');
+                    } else {
+                        console.log('Connect Success');
+                        poll.username = data[1];
+                        poll.request(data[1]);
+                    }
+                } catch (error) {
+                    document.getElementById("output").innerHTML = data;
+                    console.log(error);
+                }
             },
             error: function () {
                 console.log('error');
@@ -23,7 +33,7 @@ var poll = {
             url: '../poll/poll.php',
             type: 'POST',
             data: {
-                'username': 'test',
+                'username': username,
             },
             success: function (json) {
                 try {
@@ -44,7 +54,6 @@ var poll = {
         });
     }
 }
-poll.request('tst');
 var handle = {
     handle: function (data) {
         switch (data[0]) {
@@ -53,7 +62,7 @@ var handle = {
                 console.log(data[1]);
                 break;
             case 'no change':
-                console.log('pollcomplete, nochange, sendingnew');
+                console.log('pollcomplete, nochange, sendingnew!');
                 break;
             default:
                 console.log('Unexpect message received' + data[1]);
