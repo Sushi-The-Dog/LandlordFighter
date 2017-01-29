@@ -9,33 +9,19 @@ var poll = {
             type: 'GET',
             data: {},
             success: function (data) {
-                try {
-                    data = JSON.parse(data);
-                    if (data[0] == 0) {
-                        console.log('full');
-                    } else {
-                        console.log('Connect Success');
-                        poll.username = data[1];
-                        poll.request(data[1]);
-                    }
-                } catch (error) {
-                    document.getElementById("output").innerHTML = data;
-                    console.log(error);
-                }
+
             },
             error: function () {
                 console.log('error');
             }
         });
     },
-    request: function (username) {
+    request: function () {
         $.ajax({
             url: '../poll/poll.php',
             type: 'POST',
             timeout: 75000,
-            data: {
-                'username': username,
-            },
+            data: {},
             success: function (json) {
                 try {
                     data = JSON.parse(json);

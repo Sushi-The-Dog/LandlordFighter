@@ -4,8 +4,12 @@
 var defind = {
     cardsize: 75,
     handsize: 157,
+    game: 0,
     start: function () {
-        opponentl.userin(['who', 78600], 1);
+        var username = poll.reg();
+        foor.users = username;
+        title.update();
+        poll.request();
     }
 };
 var definds = {
@@ -97,15 +101,6 @@ var opponentl = new Vue({
         }
     }
 });
-var opponentr = new Vue({
-    el: '#opponentr',
-    data: {
-        oppon: []
-    },
-    methods: {
-
-    }
-});
 var pool = new Vue({
     el: '#pool',
     data: {
@@ -164,6 +159,17 @@ var panel = new Vue({
         fives: function () {
 
         }
+    }
+});
+//current not focuson
+//_>>>>>>>>> from here
+var opponentr = new Vue({
+    el: '#opponentr',
+    data: {
+        oppon: []
+    },
+    methods: {
+
     }
 });
 var title = new Vue({
