@@ -48,7 +48,6 @@ var poll = {
             timeout: 75000,
             data: {},
             success: function (json) {
-                console.log(json);
                 try {
                     data = JSON.parse(json);
                     console.log(data);
@@ -90,6 +89,23 @@ var llfajax = {
             data: {},
             success: function (data) {
                 console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    logout: function () {
+        $.ajax({
+            url: '../php/logout.php',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                if (data == 1) {
+                    window.location.href = '../';
+                } else {
+                    console.log('error');
+                }
             },
             error: function () {
                 console.log('error');

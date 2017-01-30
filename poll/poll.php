@@ -5,15 +5,19 @@ session_write_close();
 if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
     $timeout = 0;
     $re = array();
-    while($timeout < 1){
+    while($timeout < 7){
         $list = file_get_contents('../json/poll/list.json');
         $list = json_decode($list);
-        $t = time();
-        $length = count($list);
-        for($x=0;$x<$length;$x++){
+        for($x=0;$x<count($list);$x++){
             if($list[$x][0] == $username){
                 array_push($re,$list[$x]);
                 array_splice($list,$x,1);
+                $x--;
+            }
+            //clean error post to list.json
+            else if($list[$x][0] == null){
+                array_splice($list,$x,1);
+                $x--;
             }
         }
         if(count($re)>0){

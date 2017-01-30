@@ -152,11 +152,11 @@ var panel = new Vue({
         },
         fours: function () {
             poll.requestonce();
-            console.log('test');
+            console.log('Test Request Start');
         },
         fives: function () {
             llfajax.cheat();
-            console.log('test');
+            console.log('Sending Test Commit');
         }
     }
 });
@@ -179,7 +179,7 @@ var title = new Vue({
     },
     methods: {
         logout: function () {
-            console.log('logout');
+            llfajax.logout();
         },
         update: function () {
             title.right = foot.users;
