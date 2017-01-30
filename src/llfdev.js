@@ -30,8 +30,7 @@ var foot = new Vue({
     },
     methods: {
         test: function () {
-            main.cardone = window.Poker.getCardData(157, 'd', 'JOKER');
-            console.log(window.Poker.getCardData(157, 'd', 'JOKER'));
+            llfajax.cheat();
         }
     }
 });

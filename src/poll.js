@@ -9,7 +9,7 @@ var poll = {
             type: 'GET',
             data: {},
             success: function (data) {
-
+                return data;
             },
             error: function () {
                 console.log('error');
@@ -55,5 +55,20 @@ var handle = {
                 console.log('Unexpect message received' + data[1]);
                 break;
         }
+    }
+}
+var llfajax = {
+    cheat: function () {
+        $.ajax({
+            url: '../poll/cheat.php',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                return data;
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
     }
 }
