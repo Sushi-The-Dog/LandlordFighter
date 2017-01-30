@@ -6,10 +6,8 @@ var defind = {
     handsize: 157,
     game: 0,
     start: function () {
-        var username = poll.reg();
-        foor.users = username;
-        title.update();
-        poll.request();
+        poll.reg();
+        // poll.request();
     }
 };
 var definds = {
@@ -30,8 +28,7 @@ var foot = new Vue({
     },
     methods: {
         test: function () {
-            main.cardone = window.Poker.getCardData(157, 'd', 'JOKER');
-            console.log(window.Poker.getCardData(157, 'd', 'JOKER'));
+            llfajax.cheat();
         }
     }
 });
@@ -154,10 +151,12 @@ var panel = new Vue({
 
         },
         fours: function () {
-
+            poll.requestonce();
+            console.log('Test Request Start');
         },
         fives: function () {
-
+            llfajax.cheat();
+            console.log('Sending Test Commit');
         }
     }
 });
@@ -180,7 +179,7 @@ var title = new Vue({
     },
     methods: {
         logout: function () {
-            console.log('logout');
+            llfajax.logout();
         },
         update: function () {
             title.right = foot.users;

@@ -10,11 +10,21 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
         $list = json_decode($list);
         for($x=0;$x<count($list);$x++){
             if($list[$x][0] == $username){
-                array_push($re,$list[0]);
+                array_push($re,$list[$x]);
+                array_splice($list,$x,1);
+                $x--;
+            }
+            //clean error post to list.json
+            else if($list[$x][0] == null){
+                array_splice($list,$x,1);
+                $x--;
             }
         }
         if(count($re)>0){
             $timeout = 10;
+        }else{
+            $timeout++;
+            sleep(3);
         }
     }
 }else{
@@ -30,7 +40,13 @@ while($re = false){
     $re = true;
   }
 }
-
+if(count($re)<1){
+    array_push($re,array($username,'timeout','timeout',time()));
+}
+$list = json_encode($list);
+file_put_contents('../json/poll/list.json', $list);
+$re = json_encode($re);
+echo $re;
 function pregmatch($string, $preg)
 {
     if (preg_match($preg, $string)) {
