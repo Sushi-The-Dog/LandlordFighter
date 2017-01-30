@@ -19,6 +19,16 @@ if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
     }
 }else{
     $re = 'error';
+$username = $_POST['username'];
+$re = false;
+while($re = false){
+  $changes = file_get_contents('../json/changes.json');
+  $changes = json_decode($changes);
+  if($changes[$username] == 0){
+    sleep(3);
+  }else{
+    $re = true;
+  }
 }
 
 function pregmatch($string, $preg)
