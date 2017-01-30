@@ -6,10 +6,8 @@ var defind = {
     handsize: 157,
     game: 0,
     start: function () {
-        var username = poll.reg();
-        foor.users = username;
-        title.update();
-        poll.request();
+        poll.reg();
+        // poll.request();
     }
 };
 var definds = {
@@ -153,10 +151,12 @@ var panel = new Vue({
 
         },
         fours: function () {
-
+            poll.requestonce();
+            console.log('test');
         },
         fives: function () {
-
+            llfajax.cheat();
+            console.log('test');
         }
     }
 });

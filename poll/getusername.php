@@ -1,7 +1,8 @@
 <?php
-
 session_start();
-echo $_SESSION['username'];
+$username = $_SESSION['username'];
+session_write_close();
+echo $username;
 // $changes = file_get_contents('../json/changes.json');
 // $changes = json_decode($changes);
 // $t = time();

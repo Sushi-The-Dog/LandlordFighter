@@ -9,7 +9,8 @@ var poll = {
             type: 'GET',
             data: {},
             success: function (data) {
-                return data;
+                foot.users = data;
+                title.update();
             },
             error: function () {
                 console.log('error');
@@ -29,7 +30,31 @@ var poll = {
                     for (var i = 0; i < data.length; i++) {
                         handle.handle(data[i]);
                     }
-                    poll.request(poll.username);
+                    poll.request();
+                } catch (error) {
+                    document.getElementById("output").innerHTML = json;
+                    console.log(error);
+                }
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    requestonce: function () {
+        $.ajax({
+            url: '../poll/poll.php',
+            type: 'POST',
+            timeout: 75000,
+            data: {},
+            success: function (json) {
+                console.log(json);
+                try {
+                    data = JSON.parse(json);
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        handle.handle(data[i]);
+                    }
                 } catch (error) {
                     document.getElementById("output").innerHTML = json;
                     console.log(error);
@@ -43,16 +68,16 @@ var poll = {
 }
 var handle = {
     handle: function (data) {
-        switch (data[0]) {
+        switch (data[1]) {
             case 'test':
-                document.getElementById("output").innerHTML += data[1];
-                console.log(data[1]);
+                document.getElementById("output").innerHTML += data[2];
+                console.log(data[2]);
                 break;
-            case 'no change':
+            case 'timeout':
                 console.log('pollcomplete, nochange, sendingnew!');
                 break;
             default:
-                console.log('Unexpect message received' + data[1]);
+                console.log('Unexpect message received' + data[2]);
                 break;
         }
     }
@@ -64,7 +89,7 @@ var llfajax = {
             type: 'POST',
             data: {},
             success: function (data) {
-                return data;
+                console.log(data);
             },
             error: function () {
                 console.log('error');
