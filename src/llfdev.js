@@ -48,6 +48,7 @@ var opponentl = new Vue({
         display: '<i class="fa fa-camera-retro fa-rotate-90"></i> Waiting For Game',
         introone: '',
         introtwo: '',
+        id: '',
         actionone: '',
         actiontwo: '',
         user: '',
@@ -114,13 +115,14 @@ var panel = new Vue({
     el: '#panel',
     data: {
         chips: 0,
-        one: '<i class="fa fa-superpowers"></i> Cash In',
+        one: '<i class="fa fa-superpowers"></i> Buy In',
         two: '<i class="fa fa-forumbee"></i> Cash Out',
         three: '<i class="fa fa-bandcamp"></i> Buy Chips',
         four: '<i class="fa fa-cog"></i> Setting',
         five: '<i class="fa fa-github-alt"></i> Test'
     },
     methods: {
+        //buy in
         ones: function () {
             layer.prompt({
                 title: 'Buy in',
@@ -144,16 +146,21 @@ var panel = new Vue({
                 }
             });
         },
+        //cash out
         twos: function () {
-
+            llfajax.cashout();
+            console.log('Cash out Processing');
         },
+        //buy chips
         threes: function () {
 
         },
+        // setting
         fours: function () {
             poll.requestonce();
             console.log('Test Request Start');
         },
+        // test
         fives: function () {
             llfajax.cheat();
             console.log('Sending Test Commit');

@@ -5,18 +5,20 @@ var poll = {
     username: '',
     reg: function () {
         $.ajax({
-            url: '../poll/getusername.php',
+            url: '../poll/register.php',
             type: 'GET',
             data: {},
             success: function (data) {
+                console.log(data);
                 try {
                     json = JSON.parse(data);
-                    var username = data[0];
-                    var chips = data[1];
-                    foot.users = data;
+                    var username = json[0];
+                    var chips = json[1];
+                    foot.users = username;
+                    panel.chips = chips;
                     title.update();
                 } catch (error) {
-                    console.log(data);
+                    console.log(json);
                 }
 
             },
@@ -83,6 +85,16 @@ var handle = {
             case 'timeout':
                 console.log('pollcomplete, nochange, sendingnew!');
                 break;
+            case 'cash out':
+                if (data[2][0] == foot.users) {
+                    panel.chips = data[2][1];
+                    foot.chips = 0;
+                }
+                if (data[2][0] == opponentl.id) {
+                    opponentl.chips = 0;
+                }
+                console.log('User: ' + data[2][0] + ' Cashed Out, he/she have: ' + data[2][1] + ' Chips');
+                break;
             default:
                 console.log('Unexpect message received' + data[2]);
                 break;
@@ -114,6 +126,19 @@ var llfajax = {
                 } else {
                     console.log('error');
                 }
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    cashout: function () {
+        $.ajax({
+            url: '../poll/cashout.php',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                console.log('Complete Cash Out');
             },
             error: function () {
                 console.log('error');
