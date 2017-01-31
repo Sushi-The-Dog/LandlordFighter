@@ -1,6 +1,7 @@
 <?php
-// this php file include function that running with out socket
-// for sec we put card file in the cards.json
+
+// This is class function for cards.
+// Since Socket is not work, stop using this
 class cards
 {
     protected $cards = array();

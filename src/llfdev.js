@@ -132,6 +132,7 @@ var panel = new Vue({
                 layer.close(index);
                 if (!isNaN(amount)) {
                     if (amount <= panel.chips) {
+                        llfajax.buyin(amount);
                         panel.chips -= amount;
                         foot.chips += parseInt(amount);
                     } else {

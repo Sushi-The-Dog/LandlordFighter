@@ -132,12 +132,29 @@ var llfajax = {
             }
         });
     },
+    buyin: function (amount) {
+        $.ajax({
+            url: '../poll/buyin.php',
+            type: 'POST',
+            data: {
+                'chips': amount
+            },
+            success: function (data) {
+                console.log(data);
+                console.log('Complete Buy in');
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
     cashout: function () {
         $.ajax({
             url: '../poll/cashout.php',
             type: 'POST',
             data: {},
             success: function (data) {
+                console.log(data);
                 console.log('Complete Cash Out');
             },
             error: function () {
