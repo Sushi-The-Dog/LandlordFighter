@@ -9,8 +9,16 @@ var poll = {
             type: 'GET',
             data: {},
             success: function (data) {
-                foot.users = data;
-                title.update();
+                try {
+                    json = JSON.parse(data);
+                    var username = data[0];
+                    var chips = data[1];
+                    foot.users = data;
+                    title.update();
+                } catch (error) {
+                    console.log(data);
+                }
+
             },
             error: function () {
                 console.log('error');

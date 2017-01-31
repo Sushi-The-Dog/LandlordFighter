@@ -1,13 +1,22 @@
 <?php
-
-function pregmatch($string, $preg)
-{
-    if (preg_match($preg, $string)) {
-        return true;
+session_start();
+$username = $_SESSION['username'];
+session_write_close();
+timeplayer($username);
+$re = array();
+$playerdata = file_get_contents('../json/users.json');
+$playerdata = json_decode($playerdata);
+for($x=0;$x<count($playerdata);$x++){
+    if($playerdata[$x][0] == $username){
+        array_push($re,$playerdata[$x][3]);
     }
-    else {
-        return false;
-    }
+}
+if(count($re)<1){
+    echo 'error';
+}else{
+    array_unshift($re,$username);
+    $re = json_encode($re);
+    echo $re;
 }
 function timeplayer($username){
     $player = file_get_contents('../json/poll/player.json');
