@@ -42,6 +42,7 @@ var main = new Vue({
 
     }
 });
+//going to rebuild this
 var opponentl = new Vue({
     el: '#opponentl',
     data: {

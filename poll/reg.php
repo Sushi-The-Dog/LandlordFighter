@@ -18,7 +18,7 @@ for($y=0;$y<count($emit);$y++){
             $did = 1;
         }
         $times = time()-$list[$x][3];
-        if($times >= 600){
+        if($times >= 580){
             array_splice($list,$x,1);
             $x--;
         }
@@ -46,7 +46,7 @@ function getactiveplayersandtimestampplayer($username){
         }else{
             $t= time();
             $tchange = $t - $player[$x][1];
-            if($tchange <= 600){
+            if($tchange <= 580){
                 array_push($re,$player[$x][0]);
             }
         }
