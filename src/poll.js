@@ -125,6 +125,9 @@ var llfajax = {
             }
         });
     },
+    start: function () {
+
+    },
     response: function (target) {
         $.ajax({
             url: '../poll/responsereg.php',
