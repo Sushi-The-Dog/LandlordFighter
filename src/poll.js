@@ -128,6 +128,9 @@ var llfajax = {
     start: function () {
 
     },
+    bet: function () {
+
+    },
     response: function (target) {
         $.ajax({
             url: '../poll/responsereg.php',
