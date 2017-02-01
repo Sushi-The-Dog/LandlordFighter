@@ -18,6 +18,7 @@ var poll = {
                     panel.chips = chips;
                     title.update();
                     llfajax.register();
+                    poll.request();
                 } catch (error) {
                     console.log(json);
                 }
@@ -84,7 +85,7 @@ var handle = {
                 console.log(data[2]);
                 break;
             case 'timeout':
-                console.log('pollcomplete, nochange, sendingnew!');
+                console.log('Complete, Nothing, Sending');
                 break;
             case 'cash out':
                 if (data[2][0] == foot.users) {
@@ -104,6 +105,31 @@ var handle = {
                 break;
             case 'response':
                 console.log('response received ' + data[2]);
+                if (data[2] != foot.users) {
+                    if (opponentl.id == data[2]) {
+                        console.log('i d k either');
+                        return;
+                    }
+                    opponentl.userin([data[2], 0], 1);
+                    llfajax.responseshake(data[2]);
+                    opponentl.ingame = 1;
+                }
+                break;
+            case 'responses':
+                console.log('response received ' + data[2]);
+                if (data[2] != foot.users) {
+                    if (opponentl.id == data[2]) {
+                        console.log('i d k either');
+                        return;
+                    }
+                    opponentl.userin([data[2], 0], 1);
+                    opponentl.ingame = 1;
+                }
+                break;
+            case 'buy in':
+                if (opponentl.id == data[2][0]) {
+                    opponentl.chips = data[2][1];
+                }
                 break;
             default:
                 console.log('Unexpect message received' + data[2]);
@@ -112,6 +138,21 @@ var handle = {
     }
 }
 var llfajax = {
+    responseshake: function (target) {
+        $.ajax({
+            url: '../poll/responseregs.php',
+            type: 'POST',
+            data: {
+                'response': target
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
     cheat: function () {
         $.ajax({
             url: '../poll/cheat.php',

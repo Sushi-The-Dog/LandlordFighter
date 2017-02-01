@@ -60,6 +60,7 @@ var opponentl = new Vue({
             opponentl.updateintro(user, location);
             opponentl.updateaction('<i class="fa fa-hand-spock-o"></i> Just<strong>Came in</strong>', location);
             opponentl.update();
+            opponentl.id = user[0];
         },
         updateintro: function (user, location) {
             var id = user[0];
