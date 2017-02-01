@@ -41,7 +41,7 @@ function getactiveplayersandtimestampplayer($username){
         }else{
             $t= time();
             $tchange = $t - $player[$x][1];
-            if($tchange <= 12500){
+            if($tchange <= 600){
                 array_push($re,$player[$x][0]);
             }
         }

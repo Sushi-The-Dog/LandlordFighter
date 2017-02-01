@@ -17,6 +17,7 @@ var poll = {
                     foot.users = username;
                     panel.chips = chips;
                     title.update();
+                    llfajax.register();
                 } catch (error) {
                     console.log(json);
                 }
@@ -95,6 +96,15 @@ var handle = {
                 }
                 console.log('User: ' + data[2][0] + ' Cashed Out, he/she have: ' + data[2][1] + ' Chips');
                 break;
+            case 'player reg':
+                console.log('reg received Player: ' + data[2]);
+                if (data[2] != foot.users) {
+                    llfajax.response(data[2]);
+                }
+                break;
+            case 'response':
+                console.log('response received ' + data[2]);
+                break;
             default:
                 console.log('Unexpect message received' + data[2]);
                 break;
@@ -105,6 +115,34 @@ var llfajax = {
     cheat: function () {
         $.ajax({
             url: '../poll/cheat.php',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    response: function (target) {
+        $.ajax({
+            url: '../poll/responsereg.php',
+            type: 'POST',
+            data: {
+                'response': target
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    register: function () {
+        $.ajax({
+            url: '../poll/reg.php',
             type: 'POST',
             data: {},
             success: function (data) {
