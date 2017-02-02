@@ -88,6 +88,15 @@ var handle = {
                 console.log('Complete, Nothing, Sending');
                 break;
             case 'chat':
+                console.log('From: ' + data[0]);
+                console.log('Chat Message received: ' + data[2]);
+                break;
+            case 'log out':
+                console.log(data);
+                if (data[2][0] == opponentl.id) {
+                    opponentl.display = '<i class="fa fa-camera-retro fa-rotate-90"></i> Player Exited';
+                    llfajax.register();
+                }
                 break;
             case 'cash out':
                 if (data[2][0] == foot.users) {
@@ -96,6 +105,8 @@ var handle = {
                 }
                 if (data[2][0] == opponentl.id) {
                     opponentl.chips = 0;
+                    opponentl.updateintro([data[2][0], 0], 1);
+                    opponentl.update();
                 }
                 console.log('User: ' + data[2][0] + ' Cashed Out, he/she have: ' + data[2][1] + ' Chips');
                 break;
@@ -126,11 +137,15 @@ var handle = {
                     }
                     opponentl.userin([data[2], 0], 1);
                     opponentl.ingame = 1;
+                    llfajax.start();
                 }
                 break;
             case 'buy in':
+                console.log(data);
                 if (opponentl.id == data[2][0]) {
                     opponentl.chips = data[2][1];
+                    opponentl.updateintro([data[2][0], data[2][1]], 1);
+                    opponentl.update();
                 }
                 break;
             default:
@@ -185,7 +200,17 @@ var llfajax = {
         });
     },
     start: function () {
-
+        $.ajax({
+            url: '../poll/cheat.php',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
     },
     bet: function () {
 
