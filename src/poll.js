@@ -87,6 +87,8 @@ var handle = {
             case 'timeout':
                 console.log('Complete, Nothing, Sending');
                 break;
+            case 'chat':
+                break;
             case 'cash out':
                 if (data[2][0] == foot.users) {
                     panel.chips = data[2][1];
@@ -144,6 +146,22 @@ var llfajax = {
             type: 'POST',
             data: {
                 'response': target
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    },
+    chat: function (target, data) {
+        $.ajax({
+            url: '../poll/chat.php',
+            type: 'POST',
+            data: {
+                'target': target,
+                'data': data
             },
             success: function (data) {
                 console.log(data);
