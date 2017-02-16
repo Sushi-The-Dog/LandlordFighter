@@ -2,6 +2,8 @@
 
 ### ALPHA
 
+-   Version 0.5.03
+    -   Update lib
 -   Version 0.5.02
     -   Create room and aircraft
 -   Version 0.5.01
