@@ -2,6 +2,10 @@
 
 ### ALPHA
 
+-   Version 0.5.10
+    -   Create v-for page
+    -   Update lib
+    -   Clean
 -   Version 0.5.03
     -   Update lib
     -   Clean

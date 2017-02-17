@@ -1,7 +1,8 @@
 <?php
-session_start();
-$username = $_SESSION['username'];
-session_write_close();
+// session_start();
+// $username = $_SESSION['username'];
+// session_write_close();
+$username = 'test';
 //pregmatch
 if (pregmatch($username, '/^[a-zA-Z0-9_]+$/')) {
     $timeout = 0;

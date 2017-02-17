@@ -1,4 +1,4 @@
 <?php
 
-$t = $_GET['test'];
+$t = $_REQUEST['test'];
 echo $t;

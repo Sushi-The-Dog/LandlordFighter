@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="/LandlordFighter/lib/buttons.css">
     <link rel="shortcut icon" href="/LandlordFighter/style/ico/icon.png">
     <link rel="stylesheet" href="/LandlordFighter/lib/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/LandlordFighter/style/form-elements.css">
     <link rel="stylesheet" href="/LandlordFighter/style/air.css">
 </head>
 
 <body>
-    <div class="container-fluid" id="title">
+    <div class="container-fluid">
         <div class="row-fluid air-smallmerge" id="title">
             <div class="col-md-6 left-corner">
                 **Landlord Fighter
@@ -24,34 +23,64 @@
                 Logout
             </div>
         </div>
-        <div class="row-fluid air-merge" id="game">
+        <div class="row-fluid air-merge">
             <div class="col-md-2">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-window-maximize"></i> &nbsp;
-                        <strong>Cards</strong></div><br> {{test}}
+                        <strong>Cards</strong>
+                        <hr>
+                    </div>
+                    <div>
+                        <!--cards-->
+                    </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-skyatlas air-red"></i> &nbsp;
-                        <strong>Invaders</strong></div><br> {{test}}
+                        <strong>Invaders</strong>
+                        <hr>
+                    </div>
+                    <div id="invaders">
+                        <table>
+                            <tr v-for="row in invaderform">
+                                <td v-for="col in row">
+                                    {{ col }}
+                                </td>
+                            </tr>
+                        </table>
+                        <button v-on:click="quvc">TEST</button>{{test}}
+                    </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-skyatlas air-green"></i> &nbsp;
-                        <strong>AirSpace</strong></div><br> {{test}}
+                        <strong>AirSpace</strong>
+                        <hr>
+                    </div>
+                    <div id="airspace">
+                        <table>
+                            <tr v-for="row in airspaceform">
+                                <td v-for="col in row">
+                                    {{ col }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script src="/LandlordFighter/lib/jquery.min.js"></script>
+<script src="/LandlordFighter/lib/caper.js"></script>
 <script src="/LandlordFighter/lib/vue.js"></script>
 <script src="/LandlordFighter/lib/layer.js"></script>
 <script src="/LandlordFighter/lib/jquery.backstretch.min.js"></script>
 <script src="/LandlordFighter/lib/bootstrap.min.js"></script>
 <script src="/LandlordFighter/src/air/room.js"></script>
 <script src="/LandlordFighter/style/roomstyle.js"></script>
+<script src="/LandlordFighter/src/air/poll.js"></script>
 
 </html>
