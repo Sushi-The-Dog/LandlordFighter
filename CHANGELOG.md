@@ -2,6 +2,9 @@
 
 ### ALPHA
 
+-   Version 0.5.11
+    -   Change color feature
+    -   V-bind and V-for compete
 -   Version 0.5.10
     -   Create v-for page
     -   Update lib

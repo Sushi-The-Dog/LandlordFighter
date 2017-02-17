@@ -44,12 +44,11 @@
                     <div id="invaders">
                         <table>
                             <tr v-for="row in invaderform">
-                                <td v-for="col in row">
-                                    {{ col }}
+                                <td v-for="col in row" v-bind:class="col.color" v-on:click="quvc(col)">
+                                    &nbsp;{{ col.display }}&nbsp;
                                 </td>
                             </tr>
                         </table>
-                        <button v-on:click="quvc">TEST</button>{{test}}
                     </div>
                 </div>
             </div>
@@ -63,7 +62,7 @@
                         <table>
                             <tr v-for="row in airspaceform">
                                 <td v-for="col in row">
-                                    {{ col }}
+                                    {{ col.display }}
                                 </td>
                             </tr>
                         </table>
