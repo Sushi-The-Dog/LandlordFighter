@@ -2,6 +2,9 @@
 
 ### ALPHA
 
+-   Version 0.5.13
+    -   Add inin functions
+    -   More colors  
 -   Version 0.5.12
     -   Add cards function
     -   Add colors
