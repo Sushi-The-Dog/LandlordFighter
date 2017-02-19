@@ -30,6 +30,18 @@
                         <strong>Cards</strong>
                         <hr>
                     </div>
+                    <div id="cards">
+                        <dl>
+                            <div v-for="card in usercards">
+                                <dt class="xlarger-text-meng">
+                                    <button class="button button-border button-square c-black"><i v-bind:class="toicon(card)"></i></button>&nbsp;{{card.displayname}}
+                                </dt>
+                                <dd v-html="card.description"></dd>
+                                <hr>
+                            </div>
+
+                        </dl>
+                    </div>
                     <div>
                         <!--cards-->
                     </div>
@@ -61,8 +73,8 @@
                     <div id="airspace">
                         <table>
                             <tr v-for="row in airspaceform">
-                                <td v-for="col in row">
-                                    {{ col.display }}
+                                <td v-for="col in row" v-bind:class="col.color" v-on:click="quvc(col)">
+                                    &nbsp;{{ col.display}}&nbsp;
                                 </td>
                             </tr>
                         </table>

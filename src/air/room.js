@@ -31,6 +31,45 @@ var game = {
         return s;
     }
 }
+var cards = new Vue({
+    el: '#cards',
+    data: {
+        usercards: [{
+                id: 45,
+                icon: 'bitcoin',
+                displayname: 'eatsss',
+                description: '<strong>descr</strong>iption',
+                color: 'red'
+            },
+            {
+                id: 46,
+                icon: 'binoculars',
+                displayname: 'eats',
+                description: 'description46',
+                color: 'orange'
+            }
+        ]
+    },
+    methods: {
+        toicon: function (card) {
+            return 'fa fa-' + card.icon + ' air-' + card.color;
+        },
+        addcard: function (inincard) {
+            var card = {
+                id: 0,
+                icon: 'cc',
+                displayname: 'TEST',
+                description: 'Destrory EVERYTHING!',
+                color: 'white'
+            }
+            for (var i in inincard) {
+                card[i] = inincard[i];
+            }
+            this.usercards.push(card);
+            return 1;
+        }
+    }
+})
 var airspace = new Vue({
     el: '#airspace',
     data: {
@@ -38,7 +77,10 @@ var airspace = new Vue({
     },
     computed: {},
     methods: {
-
+        quvc: function (target) {
+            this.airspaceform[target.row][target.col].color = 'c-red';
+            console.log(target.row + '_' + target.col);
+        }
     }
 })
 var invaders = new Vue({

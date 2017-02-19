@@ -2,6 +2,9 @@
 
 ### ALPHA
 
+-   Version 0.5.12
+    -   Add cards function
+    -   Add colors
 -   Version 0.5.11
     -   Change color feature
     -   V-bind and V-for compete

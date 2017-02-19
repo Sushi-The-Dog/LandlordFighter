@@ -13,8 +13,24 @@
     background-color: #00f2f1;
 }
 
+.c-black {
+    background-color: black;
+}
+
 .c-red {
-    background-color: #00ff62;
+    background-color: #fc5252;
+}
+
+.c-yellow {
+    background-color: #ffec2f;
+}
+
+.c-green {
+    background-color: #45ff58;
+}
+
+.c-orange {
+    background-color: #ffb200;
 }
 
 table {
@@ -38,11 +54,19 @@ td {
 }
 
 .air-red {
-    color: red;
+    color: #ff4f4f;
+}
+
+.air-orange {
+    color: #fcd967;
 }
 
 .air-green {
     color: green;
+}
+
+.air-white {
+    color: white;
 }
 
 .backstretch {
