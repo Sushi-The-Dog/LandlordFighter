@@ -2,6 +2,10 @@
 
 ### ALPHA
 
+-   Version 0.5.14
+    -   Update css functions
+    -   Banlance both
+    -   Add more cards
 -   Version 0.5.13
     -   Add inin functions
     -   More colors  
