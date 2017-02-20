@@ -2,6 +2,9 @@
 
 ### ALPHA
 
+-   Version 0.5.15
+    -   Update index of air game
+    -   add setup block
 -   Version 0.5.14
     -   Update css functions
     -   Banlance both

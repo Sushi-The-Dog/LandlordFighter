@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container-fluid" id="title">
+    <div class="container-fluid">
         <div class="row-fluid air-smallmerge" id="title">
             <div class="col-md-6 left-corner">
                 *Landlord Fighter
@@ -28,9 +28,23 @@
             <div class="col-md-3">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-window-maximize"></i> &nbsp;
-                        <strong>Rooms</strong></div>
-                    <div>
-
+                        <strong>Rooms</strong>
+                        <hr>
+                    </div>
+                    <div id="rooms">
+                        <dl>
+                            <div v-for="(room,index) in roomlist">
+                                <dt class="xlarger-text-meng">
+                                    <button v-on:click="enterroom(room)" class="button button-border fullblock-air"><i class="fa fa-rocket"></i>&nbsp;Enter {{room.roomid}}</button>
+                                </dt>
+                                <dd>Owner: {{room.owner}}<br>Players: {{room.players}}</dd>
+                                <hr>
+                            </div>
+                            <dt>
+                                <button v-bind:disabled="buttondis" class="button button-border fullblock-air" v-on:click="refresh">refresh</button>
+                            </dt>
+                        </dl>
+                        <!--{{roomlist}}-->
                     </div>
                 </div>
             </div>
@@ -49,7 +63,7 @@
             <div class="col-md-2">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-bars"></i> &nbsp;
-                        <strong>MyAccount</strong></div>
+                        <strong>Account</strong></div>
                 </div>
             </div>
         </div>
