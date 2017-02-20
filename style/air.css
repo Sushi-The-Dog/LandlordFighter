@@ -53,6 +53,10 @@ td {
     border: 1px solid black;
 }
 
+.llf-mid {
+    text-align: center;
+}
+
 .air-red {
     color: #ff4f4f;
 }

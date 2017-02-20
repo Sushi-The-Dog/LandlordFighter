@@ -39,7 +39,9 @@ var cards = new Vue({
             icon: 'bitcoin',
             displayname: 'eatsss',
             description: 'Shot to a <strong>3*3</strong> Area <br> instand of Normal shot',
-            color: 'red',
+            color: 'green',
+            txtcolor: 'green',
+            bgcolor: 'black',
             onuse: function () {
                 console.log('test');
             }
@@ -49,6 +51,9 @@ var cards = new Vue({
         toicon: function (card) {
             return 'fa fa-' + card.icon + ' air-' + card.color;
         },
+        tocolor: function (card) {
+            return 'air-' + card.txtcolor + ' c-' + card.bgcolor;
+        },
         addcard: function (inincard) {
             var card = {
                 id: 0,
@@ -56,6 +61,8 @@ var cards = new Vue({
                 displayname: 'TEST',
                 description: 'Destrory EVERYTHING!',
                 color: 'white',
+                txtcolor: 'red',
+                bgcolor: 'black',
                 onuse: function () {
                     console.log('test');
                 }
@@ -67,9 +74,9 @@ var cards = new Vue({
             return 1;
         },
         //TODO Addremove card function
-        usecard: function (card) {
+        usecard: function (card, index) {
+            this.usercards.splice(index, 1);
             card.onuse();
-            this.usercards.pop();
         }
     }
 })
