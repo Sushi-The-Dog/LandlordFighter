@@ -2,6 +2,10 @@
 
 ### ALPHA
 
+-   Version 0.5.16
+    -   Bring Card into game
+    -   Enter room
+    -   layer
 -   Version 0.5.15
     -   Update index of air game
     -   add setup block

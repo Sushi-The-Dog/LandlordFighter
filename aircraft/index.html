@@ -63,23 +63,22 @@
                                 </button>
                                 <hr>
                             </div>
-                            <button disabled="disabled" class="button button-border fullblock-air" v-on:click="refresh">refresh</button>
+                            <div v-if="setuplist.length<=1">Loadout Design is not supported yet, email llf@wmpcxpy.com for that</div>
+                            <button class="button button-border square-air"><div class="c-content xlarger-text-meng"><i class="fa fa-diamond"></i>&nbsp;Random</div></button>
                         </div>
 
                         <div class="col-md-6 right-corner">
                             <div class="larger-text-meng"><strong>Cards</strong>&nbsp;
                                 <i class="fa fa-window-maximize"></i></div>
                             <dl>
-                                <div v-for="(room,index) in roomlist">
+                                <div v-for="(card,index) in cardslist">
                                     <dt class="xlarger-text-meng">
-                                        <button v-on:click="enterroom(room)" class="button button-border fullblock-air"><i class="fa fa-rocket"></i>&nbsp;Enter {{room.roomid}}</button>
+                                        <button v-on:click="usecard(card,index)" class="button fullblock-air button-border" v-bind:class="ctocolor(card)"><i v-bind:class="toicon(card)"></i>&nbsp;{{card.displayname}}</button>
                                     </dt>
-                                    <dd>Owner: {{room.owner}}<br>Players: {{room.players}}</dd>
+                                    <dd v-html="card.description"></dd>
                                     <hr>
                                 </div>
-                                <dt>
-                                    <button v-bind:disabled="buttondis" class="button button-border fullblock-air" v-on:click="refresh">refresh</button>
-                                </dt>
+
                             </dl>
                         </div>
                     </div>

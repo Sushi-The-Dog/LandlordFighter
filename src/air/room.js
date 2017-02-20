@@ -1,16 +1,6 @@
 (function () {
     'use strict';
 }());
-// $('.c-red').hide();
-// $('.c-blue').mousemove(function (e) {
-//     $('.c-red').eq($(this).index()).show().css({
-//         "top": e.pageY,
-//         "left": e.pageX
-//     }).siblings("div").hide();
-// });
-// $('.list li').mouseleave(function () {
-//     $('.c-red').hide();
-// });
 var game = {
     setting: {
         battlefiled: 12
@@ -52,9 +42,11 @@ var cards = new Vue({
                 color: 'white',
                 txtcolor: 'red',
                 bgcolor: 'black',
+                setcolor: this.bgcolor,
                 onuse: function () {
                     console.log('test');
-                }
+                },
+                sent: false
             }
             for (var i in inincard) {
                 card[i] = inincard[i];
@@ -62,7 +54,6 @@ var cards = new Vue({
             this.usercards.push(card);
             return 1;
         },
-        //TODO Addremove card function
         usecard: function (card, index) {
             this.usercards.splice(index, 1);
             card.onuse();
