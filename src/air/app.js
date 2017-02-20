@@ -15,6 +15,31 @@ var polls = {
             players: 0
         }];
         return room;
+    },
+    loadcard: function () {
+        var card = [{
+            id: 45,
+            icon: 'bitcoin',
+            displayname: 'eatsss',
+            description: 'Shot to a <strong>3*3</strong> Area <br> instand of Normal shot',
+            color: 'green',
+            txtcolor: 'green',
+            bgcolor: 'black',
+            onuse: function () {
+                console.log('test');
+            }
+        }];
+        return card;
+    },
+    loadsetup: function () {
+        var setup = [{
+            layout: 'DIJAOID',
+            id: 0
+        }, {
+            layout: 'YHHH',
+            id: 1
+        }];
+        return setup;
     }
 }
 var title = new Vue({
@@ -39,6 +64,16 @@ var rooms = new Vue({
 
         },
         refresh: function () {
+            layer.open({
+                type: 2,
+                closeBtn: 1,
+                title: 'Setup',
+                area: ['75%', '75%'],
+                content: './design',
+                end: function () {
+                    console.log('Closed');
+                }
+            });
             this.roomlist = polls.loadroom();
             this.buttondis = true;
             setTimeout(function () {
@@ -47,6 +82,24 @@ var rooms = new Vue({
         },
         freshroom: function () {
 
+        }
+    }
+})
+var setup = new Vue({
+    el: '#setup',
+    data: {
+        setuplist: polls.loadsetup(),
+        cardslist: polls.loadcard()
+    },
+    methods: {
+        setup: function () {
+
+        },
+        cards: function () {
+
+        },
+        tocolor: function (col) {
+            return 'c-' + col;
         }
     }
 })

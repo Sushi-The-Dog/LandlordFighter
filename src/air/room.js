@@ -34,18 +34,7 @@ var game = {
 var cards = new Vue({
     el: '#cards',
     data: {
-        usercards: [{
-            id: 45,
-            icon: 'bitcoin',
-            displayname: 'eatsss',
-            description: 'Shot to a <strong>3*3</strong> Area <br> instand of Normal shot',
-            color: 'green',
-            txtcolor: 'green',
-            bgcolor: 'black',
-            onuse: function () {
-                console.log('test');
-            }
-        }]
+        usercards: []
     },
     methods: {
         toicon: function (card) {

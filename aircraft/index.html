@@ -27,8 +27,7 @@
         <div class="row-fluid air-merge">
             <div class="col-md-3">
                 <div class="col-md-12 well">
-                    <div class="larger-text-meng"><i class="fa fa-window-maximize"></i> &nbsp;
-                        <strong>Rooms</strong>
+                    <div class="larger-text-meng"><i class="fa fa-globe"></i>&nbsp; <strong>Rooms</strong>
                         <hr>
                     </div>
                     <div id="rooms">
@@ -48,19 +47,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-6">
                 <div class="col-md-12 well">
-                    <div class="larger-text-meng"><i class="fa fa-window-maximize"></i> &nbsp;
-                        <strong>Ships</strong></div>
+                    <div class="larger-text-meng"><i class="fa fa-book"></i>&nbsp;<strong>SetUp</strong>
+                        <hr>
+                    </div>
+                    <div id="setup">
+                        <div class="col-md-6 left-corner">
+                            <div class="larger-text-meng"><strong>Setups</strong><i class="fa fa-ship"></i>
+                                <br>
+                            </div>
+                            <div v-for="(setup,index) in setuplist">
+                                <button class="button button-border square-air">
+                                    <div class="c-content">{{setup.layout}}</div>
+                                </button>
+                                <hr>
+                            </div>
+                            <button disabled="disabled" class="button button-border fullblock-air" v-on:click="refresh">refresh</button>
+                        </div>
+
+                        <div class="col-md-6 right-corner">
+                            <div class="larger-text-meng"><strong>Cards</strong>&nbsp;
+                                <i class="fa fa-window-maximize"></i></div>
+                            <dl>
+                                <div v-for="(room,index) in roomlist">
+                                    <dt class="xlarger-text-meng">
+                                        <button v-on:click="enterroom(room)" class="button button-border fullblock-air"><i class="fa fa-rocket"></i>&nbsp;Enter {{room.roomid}}</button>
+                                    </dt>
+                                    <dd>Owner: {{room.owner}}<br>Players: {{room.players}}</dd>
+                                    <hr>
+                                </div>
+                                <dt>
+                                    <button v-bind:disabled="buttondis" class="button button-border fullblock-air" v-on:click="refresh">refresh</button>
+                                </dt>
+                            </dl>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="col-md-12 well">
-                    <div class="larger-text-meng"><i class="fa fa-book"></i> &nbsp;
-                        <strong>SetUp</strong></div>
-                </div>
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="col-md-12 well">
                     <div class="larger-text-meng"><i class="fa fa-bars"></i> &nbsp;
                         <strong>Account</strong></div>
