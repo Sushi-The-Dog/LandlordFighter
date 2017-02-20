@@ -34,7 +34,7 @@
                         <dl>
                             <div v-for="card in usercards">
                                 <dt class="xlarger-text-meng">
-                                    <button class="button button-border button-square c-black"><i v-bind:class="toicon(card)"></i></button>&nbsp;{{card.displayname}}
+                                    <button v-on:click="usecard(card)" class="button button-border button-square c-black"><i v-bind:class="toicon(card)"></i></button>&nbsp;{{card.displayname}}
                                 </dt>
                                 <dd v-html="card.description"></dd>
                                 <hr>

@@ -13,7 +13,7 @@
 // });
 var game = {
     setting: {
-        battlefiled: 10
+        battlefiled: 12
     },
     gen: function () {
         var s = [];
@@ -35,20 +35,15 @@ var cards = new Vue({
     el: '#cards',
     data: {
         usercards: [{
-                id: 45,
-                icon: 'bitcoin',
-                displayname: 'eatsss',
-                description: '<strong>descr</strong>iption',
-                color: 'red'
-            },
-            {
-                id: 46,
-                icon: 'binoculars',
-                displayname: 'eats',
-                description: 'description46',
-                color: 'orange'
+            id: 45,
+            icon: 'bitcoin',
+            displayname: 'eatsss',
+            description: 'Shot to a <strong>3*3</strong> Area <br> instand of Normal shot',
+            color: 'red',
+            onuse: function () {
+                console.log('test');
             }
-        ]
+        }]
     },
     methods: {
         toicon: function (card) {
@@ -60,13 +55,21 @@ var cards = new Vue({
                 icon: 'cc',
                 displayname: 'TEST',
                 description: 'Destrory EVERYTHING!',
-                color: 'white'
+                color: 'white',
+                onuse: function () {
+                    console.log('test');
+                }
             }
             for (var i in inincard) {
                 card[i] = inincard[i];
             }
             this.usercards.push(card);
             return 1;
+        },
+        //TODO Addremove card function
+        usecard: function (card) {
+            card.onuse();
+            this.usercards.pop();
         }
     }
 })
@@ -101,3 +104,15 @@ var title = new Vue({
     data: {},
     computed: {}
 })
+var gencards = {
+    aoe: {
+        id: 1,
+        icon: 'cubes',
+        displayname: 'Area of Effect',
+        description: 'Shot to a <strong>3*3</strong> Area <br> instand of Normal shot',
+        color: 'red',
+        onuse: function () {
+            console.log('boom');
+        }
+    }
+}
