@@ -100,11 +100,28 @@ var rooms = new Vue({
             if (room.players >= 2) {
                 layer.msg('Room Full');
             } else {
+                this.processenter(room);
                 room.players++;
             }
         },
         processenter: function (room) {
-
+            Cp$.ajax.caperajax({
+                url: '/LandlordFighter/pair/poll.php',
+                type: 'POST',
+                data: {},
+                success: function (json) {
+                    try {
+                        data = JSON.parse(json);
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            handle.handle(data[i]);
+                        }
+                        poll.request();
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            });
         },
         refresh: function () {
             layer.open({
