@@ -8,3 +8,4 @@ AIRCRAFT!!!!
 4.  Devlopment slowing dur to College
 
 _Library - phpsocket.io, caper.js, workerman, jquery(backstretch), pokerjs, layerjs, buttons, bootstrap, md5js, quarticlesjs, fontawesome_
+PAUSED
