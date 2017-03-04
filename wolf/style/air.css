@@ -1,0 +1,142 @@
+.air-merge {
+    margin: 50px;
+}
+
+.air-smallmerge {
+    margin: 8px;
+}
+
+.c-button-no {
+    margin: 0px;
+}
+
+
+/*color  control*/
+
+.c-blue {
+    background-color: #00f2f1;
+}
+
+.c-black {
+    background-color: black;
+}
+
+.c-red {
+    background-color: #fc5252;
+}
+
+.c-yellow {
+    background-color: #ffec2f;
+}
+
+.c-green {
+    background-color: #45ff58;
+}
+
+.c-orange {
+    background-color: #ffb200;
+}
+
+.c-0 {
+    background-color: #45ff58;
+}
+
+.c-1 {
+    background-color: #ffb200;
+}
+
+.c-table {
+    margin: 0px;
+    width: 100%;
+    height: 20vw;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    height: 50vmin;
+    text-align: center;
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+h1,
+h2 {
+    margin-top: 10px;
+    font-size: 38px;
+    font-weight: 300;
+    color: #555;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.llf-mid {
+    text-align: center;
+}
+
+.fullblock-air {
+    width: 100%;
+    /*padding-bottom: 50%;
+    text-align: center;*/
+}
+
+.c-content {
+    height: 100%;
+    line-height: 15vmin;
+}
+
+.square-air {
+    width: 100%;
+    padding-bottom: 50%;
+}
+
+.air-red {
+    color: #ff4f4f;
+}
+
+.air-orange {
+    color: #fcd967;
+}
+
+.air-green {
+    color: green;
+}
+
+.air-white {
+    color: white;
+}
+
+.air-gray {
+    color: #535353;
+}
+
+.backstretch {
+    -moz-filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.left-corner {
+    align-content: left;
+}
+
+.larger-text-meng {
+    font-size: 20px;
+}
+
+.xlarger-text-meng {
+    font-size: 24px;
+}
+
+.right-corner {
+    text-align: right;
+}
+
+body {
+    height: 100%;
+    font-family: 'Roboto', Georgia, sans-serif, "FangSong", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+}
