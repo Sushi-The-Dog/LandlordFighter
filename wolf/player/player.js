@@ -4,15 +4,17 @@
 var main = new Vue({
     el: '#main',
     data: {
-        email: '',
-        message: '请使用注册时填写的邮箱登录',
+        bid: '',
+        table: '',
+        message: '法官会指引你注册比赛',
+        chips: 12,
         buttondis: false
     },
     methods: {
         login: function () {
             this.buttondis = true;
             $.ajax({
-                url: './php/login.php',
+                url: '../php/login.php',
                 type: 'POST',
                 data: {
                     emails: this.email

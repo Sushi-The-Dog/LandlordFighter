@@ -12,6 +12,10 @@ strong {
     font-weight: 500;
 }
 
+.number-only {
+    ime-mode: disabled;
+}
+
 a,
 a:hover,
 a:focus {

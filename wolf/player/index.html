@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Warewolf</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/goo.fonts">
+    <link rel="stylesheet" href="../lib/buttons.css">
+    <link rel="shortcut icon" href="../style/ico/icon.png">
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/form-elements.css">
+    <link rel="stylesheet" href="../wolf.css">
+</head>
+
+<body>
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container" id="main">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1>
+                            注册
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>筹码: {{chips}}</h3>
+                                <p>{{message}}&nbsp;&nbsp;<i class="fa fa-envelope"></i></p>
+                                <p>如果你忘记了自己填写的邮箱,<br> 或遇到其他问题请联系工作人员&nbsp;&nbsp;<i class="fa fa-medkit"></i>
+                                </p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-id-card-o fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form>
+                                <div class="form-group">
+                                    <input onkeyup="value=this.value.replace(/\D+/g,'')" type="text" name="form-username" placeholder="押注数量" class="form-username form-control number-only"
+                                        v-model="bid">
+                                </div>
+                                <div class="form-group">
+                                    <input onkeyup="value=this.value.replace(/\D+/g,'')" type="text" name="form-username" placeholder="比赛编号" class="form-username form-control number-only"
+                                        v-model="table">
+                                </div>
+                                <button type="button" v-bind:disabled="buttondis" class="button button-highlight bbtn button-rounded" v-on:click="login">确认</button>
+                            </form>
+                            mengw.io
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/vue.js"></script>
+<script src="../lib/bootstrap.min.js"></script>
+<script src="../lib/Caper.js"></script>
+<script src="./player.js"></script>
+
+</html>
