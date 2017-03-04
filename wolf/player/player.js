@@ -6,7 +6,7 @@ var main = new Vue({
     data: {
         bid: '',
         table: '',
-        message: '法官会指引你注册比赛',
+        message: '不润徐在压住了',
         chips: 0,
         buttondis: false,
         bad: false
@@ -50,6 +50,24 @@ var main = new Vue({
                     }
                 });
             }
+        },
+        analysis: function () {
+            $.ajax({
+                url: '../php/get.php',
+                type: 'GET',
+                data: {
+
+                },
+                success: function (json) {
+                    try {
+                        var re = JSON.parse(json);
+                        main.chips = re;
+                    } catch (error) {
+                        main.bad = true;
+                        console.log(error);
+                    }
+                }
+            });
         }
     }
 });

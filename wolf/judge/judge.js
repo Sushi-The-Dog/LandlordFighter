@@ -134,6 +134,9 @@ var main = new Vue({
                     }
                 }
             });
+        },
+        analysis: function () {
+
         }
     }
 });
