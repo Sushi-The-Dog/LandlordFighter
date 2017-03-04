@@ -35,7 +35,7 @@ var main = new Vue({
                         console.log(re);
                         switch (re) {
                             case 1:
-                                main.message = '完成';
+                                main.message = '完成,押注了' + main.bid;
                                 main.chips -= main.bid;
                                 break;
                             case 3:

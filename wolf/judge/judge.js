@@ -101,13 +101,10 @@ var main = new Vue({
                     },
                     success: function (json) {
                         try {
-                            switch (json) {
-                                case 0:
-                                    main.message = '服务器已经归纳了结果';
-                                    break;
-                                case 1:
-                                    main.message = '应该是出错了，确认是否所有玩家都标记了胜负';
-                                    break;
+                            if (json == 0) {
+                                main.message = '服务器已经归纳了结果';
+                            } else {
+                                main.message = '应该是出错了，确认是否所有玩家都标记了胜负';
                             }
                         } catch (error) {
                             console.log(error);
