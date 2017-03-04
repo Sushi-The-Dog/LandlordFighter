@@ -56,6 +56,31 @@ img {
     text-shadow: none;
 }
 
+.backstretch {
+    -moz-filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+
+/*#cov {
+    z-index: 50;
+}
+
+*/
+
+
+/*.flot-top-top {
+    z-index: 100;
+}
+
+.flot-down-dpwn {
+    z-index: 9999;
+    position: relative;
+}*/
+
 .btn-link-1 {
     display: inline-block;
     height: 50px;
@@ -128,11 +153,7 @@ img {
 /***** Top content *****/
 
 .inner-bg {
-    padding: 100px 0 170px 0;
-}
-
-.top-content .description {
-    margin: 20px 0 10px 0;
+    padding: 30px 0 30px 0;
 }
 
 .top-content .description p {
@@ -141,7 +162,7 @@ img {
 
 .top-content .description a:hover,
 .top-content .description a:focus {
-    border-bottom: 1px dotted #fff;
+    border-bottom: 1px dotted #000;
 }
 
 .form-box {
@@ -151,7 +172,7 @@ img {
 .form-top {
     overflow: hidden;
     padding: 0 25px 15px 25px;
-    background: #fff;
+    background: #4ee8f7;
     -moz-border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
@@ -173,14 +194,14 @@ img {
     width: 25%;
     padding-top: 5px;
     font-size: 66px;
-    color: #ddd;
+    color: gray;
     line-height: 100px;
     text-align: right;
 }
 
 .form-bottom {
     padding: 25px 25px 30px 25px;
-    background: #eee;
+    background: #f6fe64;
     -moz-border-radius: 0 0 4px 4px;
     -webkit-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
