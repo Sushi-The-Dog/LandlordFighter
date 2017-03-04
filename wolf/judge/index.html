@@ -37,9 +37,10 @@
                             <button v-on:click="lose(index)">标为失败</button>
                             <hr>
                         </div>
-                        <button v-on:click="submitresult">提交到服务器</button>
+                        <button v-on:click="submitresult">提交到服务器,请在下方的输入框内填写"submit"</button><br>
+                        <button v-on:click="reroom">重新分配房间,请在下方的输入框内填写"comfirm"</button>
                         <hr>
-                        <input v-model="regi" placeholder="注册或加注外请勿填写">
+                        <input v-model="regi" placeholder="万能输入框">
                         <button v-on:click="registernew">注册新玩家</button>
                         <br>mengw.io
                     </div>

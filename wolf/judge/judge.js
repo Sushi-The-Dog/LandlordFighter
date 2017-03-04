@@ -5,6 +5,7 @@ var main = new Vue({
     el: '#main',
     data: {
         table: '',
+        tablenotbind: '',
         view: [],
         regi: '',
         message: '这里显示消息'
@@ -30,6 +31,7 @@ var main = new Vue({
                                 win: 2
                             })
                         }
+                        main.tablenotbind = main.table;
                     } catch (error) {
                         console.log(error);
                     }
@@ -68,11 +70,73 @@ var main = new Vue({
         lose: function (index) {
             this.view[index].win = 0;
         },
+        reroom: function () {
+            if (this.regi == 'confirm') {
+                $.ajax({
+                    url: '../php/reroom.php',
+                    type: 'POST',
+                    data: {
+                        table: this.tablenotbind
+                    },
+                    success: function (json) {
+                        try {
+                            main.message = '房间重置了';
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                });
+            } else {
+                this.message = '小心误操作';
+            }
+        },
         submitresult: function () {
-
+            if (this.regi == 'submit') {
+                $.ajax({
+                    url: '../php/checkout.php',
+                    type: 'POST',
+                    data: {
+                        table: this.tablenotbind,
+                        stat: JSON.stringify(this.view)
+                    },
+                    success: function (json) {
+                        try {
+                            switch (json) {
+                                case 0:
+                                    main.message = '服务器已经归纳了结果';
+                                    break;
+                                case 1:
+                                    main.message = '应该是出错了，确认是否所有玩家都标记了胜负';
+                                    break;
+                            }
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                });
+            } else {
+                this.message = '小心误操作';
+            }
         },
         registernew: function () {
-
+            $.ajax({
+                url: '../php/regnew.php',
+                type: 'POST',
+                data: {
+                    email: this.regi
+                },
+                success: function (json) {
+                    try {
+                        if (json == 0) {
+                            main.message = '服务器已经接受了新玩家';
+                        } else {
+                            main.message = '出现了错误';
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            });
         }
     }
 });
