@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Warewolf</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/goo.fonts">
+    <link rel="stylesheet" href="../lib/buttons.css">
+    <link rel="shortcut icon" href="../style/ico/icon.png">
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/form-elements.css">
+    <link rel="stylesheet" href="../wolf.css">
+</head>
+
+<body>
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container" id="main">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1>
+                            法官
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input v-model="table" placeholder="桌号">
+                        <br><button v-on:click="enter">概览</button><br> {{message}}
+                        <hr>
+                        <div v-for="(i,index) in view">
+                            邮箱：{{i.email}}
+                            <br>押注：{{i.bind}} &nbsp;剩余筹码：{{i.chips}}&nbsp;胜利情况：{{i.win}}
+                            <br><button v-on:click="add(i.email)">增加筹码</button> <button v-on:click="win(index)">标为胜利</button>
+                            <button v-on:click="lose(index)">标为失败</button>
+                            <hr>
+                        </div>
+                        <button v-on:click="submitresult">提交到服务器</button>
+                        <hr>
+                        <input v-model="regi" placeholder="注册或加注外请勿填写">
+                        <button v-on:click="registernew">注册新玩家</button>
+                        <br>mengw.io
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/vue.js"></script>
+<script src="../lib/bootstrap.min.js"></script>
+<script src="../lib/Caper.js"></script>
+<script src="./judge.js"></script>
+
+</html>

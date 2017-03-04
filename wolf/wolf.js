@@ -30,6 +30,10 @@ var main = new Vue({
                                 main.message = '正在跳转';
                                 window.location.href = './player';
                                 break;
+                            case 2:
+                                main.message = '法官登录, 正在跳转';
+                                window.location.href = './judge';
+                                break;
                             case 3:
                                 main.message = '邮箱没有被记录，请联系工作人员';
                                 main.buttondis = false;

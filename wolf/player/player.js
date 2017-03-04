@@ -7,33 +7,39 @@ var main = new Vue({
         bid: '',
         table: '',
         message: '法官会指引你注册比赛',
-        chips: 12,
-        buttondis: false
+        chips: 0,
+        buttondis: false,
+        bad: false
+    },
+    computed: {
+        title: function () {
+            if (this.bad == true) {
+                return '错误！关闭页面！';
+            }
+            return '筹码: ' + this.chips;
+        }
     },
     methods: {
         login: function () {
             this.buttondis = true;
             $.ajax({
-                url: '../php/login.php',
+                url: '../php/register.php',
                 type: 'POST',
                 data: {
-                    emails: this.email
+                    chips: this.bid,
+                    table: this.table
                 },
                 success: function (json) {
                     try {
                         var re = JSON.parse(json);
                         console.log(re);
                         switch (re) {
-                            case 0:
-                                main.message = '邮箱格式不符';
-                                main.buttondis = false;
-                                break;
                             case 1:
-                                main.message = '正在跳转';
-                                window.location.href = './player';
+                                main.message = '完成';
+                                main.chips -= main.bid;
                                 break;
                             case 3:
-                                main.message = '邮箱没有被记录，请联系工作人员';
+                                main.message = '发生了没有预知的错误，请联系工作人员';
                                 main.buttondis = false;
                                 break;
                         }
@@ -45,3 +51,23 @@ var main = new Vue({
         }
     }
 });
+
+function whilestart() {
+    $.ajax({
+        url: '../php/get.php',
+        type: 'GET',
+        data: {
+
+        },
+        success: function (json) {
+            try {
+                var re = JSON.parse(json);
+                main.chips = re;
+            } catch (error) {
+                main.bad = true;
+                console.log(error);
+            }
+        }
+    });
+}
+whilestart();
