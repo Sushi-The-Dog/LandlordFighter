@@ -29,6 +29,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <input v-model="table" placeholder="桌号">
                         <br><button v-on:click="enter">概览</button><br> {{message}}
+                        <br>{{view.length}}
                         <hr>
                         <div v-for="(i,index) in view">
                             邮箱：{{i.email}}

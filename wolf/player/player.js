@@ -22,7 +22,7 @@ var main = new Vue({
     methods: {
         login: function () {
             this.buttondis = true;
-            if (this.bid < this.chips) {
+            if (this.bid <= this.chips) {
                 $.ajax({
                     url: '../php/register.php',
                     type: 'POST',
