@@ -22,32 +22,34 @@ var main = new Vue({
     methods: {
         login: function () {
             this.buttondis = true;
-            $.ajax({
-                url: '../php/register.php',
-                type: 'POST',
-                data: {
-                    chips: this.bid,
-                    table: this.table
-                },
-                success: function (json) {
-                    try {
-                        var re = JSON.parse(json);
-                        console.log(re);
-                        switch (re) {
-                            case 1:
-                                main.message = '完成,押注了' + main.bid;
-                                main.chips -= main.bid;
-                                break;
-                            case 3:
-                                main.message = '发生了没有预知的错误，请联系工作人员';
-                                main.buttondis = false;
-                                break;
+            if (this.bid < this.chips) {
+                $.ajax({
+                    url: '../php/register.php',
+                    type: 'POST',
+                    data: {
+                        chips: this.bid,
+                        table: this.table
+                    },
+                    success: function (json) {
+                        try {
+                            var re = JSON.parse(json);
+                            console.log(re);
+                            switch (re) {
+                                case 1:
+                                    main.message = '完成,押注了' + main.bid;
+                                    main.chips -= main.bid;
+                                    break;
+                                case 3:
+                                    main.message = '发生了没有预知的错误，请联系工作人员';
+                                    main.buttondis = false;
+                                    break;
+                            }
+                        } catch (error) {
+                            console.log(error);
                         }
-                    } catch (error) {
-                        console.log(error);
                     }
-                }
-            });
+                });
+            }
         }
     }
 });

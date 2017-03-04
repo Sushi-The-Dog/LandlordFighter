@@ -5,7 +5,7 @@ var main = new Vue({
     el: '#main',
     data: {
         email: '',
-        message: '请使用注册时填写的邮箱登录',
+        message: '请使用英文姓名登录',
         buttondis: false
     },
     methods: {

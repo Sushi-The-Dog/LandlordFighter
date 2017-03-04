@@ -5,7 +5,7 @@ $emails = $_POST['emails'];
 $forms = file_get_contents('../json/form.json');
 $forms = json_decode($forms);
 $back = 3;
-if(pregmatch($emails, '/^[a-zA-Z0-9.-_@]+$/')){
+if(pregmatch($emails, '/^[a-zA-Z0-9.-_]+$/')){
     if($emails == "Caorihengshilang"){
         $back = 2;
         $_SESSION['judge'] = 'mima';
